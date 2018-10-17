@@ -1,0 +1,129 @@
+.bio-card-lite {
+	$height: 50px;
+	$padding: 20px;
+	
+	
+	position: fixed;
+	left: 0;
+	width: 100%;
+	top: $global-header-height-desktop;
+	background: $global-hue-lightest;
+	z-index: 99;
+	margin-top: ($height + $padding + 10) * -1;
+	transition: margin-top ease-in-out 0.3s;
+
+	-webkit-transform: translate3d(0, 0, 0); // solves repaint issue on bio-card-lite leaving traces of itself
+	
+	&.show {
+		margin-top: 0px;
+		
+	}
+	.suffix{		
+		font-size: 27px; 
+		&:before{
+			content:", ";
+		}
+	}
+	
+	.wrapper {
+		@extend %clearfix;
+
+		height: 50px;
+		background: $primary-hue-darkest;
+		color: $global-hue-lightest;
+		padding: 0 0 0 20px;
+	}
+	
+	.bio-title {
+		display: none;
+	}
+			.page-tools{
+			float:right;
+		}
+
+	.bio-name {
+		height: 18px;
+		line-height: $height;
+		font-weight: 400;
+		float: left;
+	}
+	.page-tools{
+		float:left;
+	}
+	.bio-utility-options {
+		float: right;
+		background: $global-hue-teal;
+		padding: 0 20px;
+		line-height: $height;
+		width:20%;
+		position: relative;
+
+		.page-tools {
+			position: static;
+		}
+
+		.share-box{
+			top:100%;
+
+			div{
+				display:block;
+			}
+
+			a {
+				color: #003764;
+				&:hover{
+					color:#8a8a8a;
+				}
+			}
+		}
+
+		a {
+			color: $global-hue-lightest;
+			margin-right:10px;
+		}
+		.addthis_toolbox .at16nc{
+			visibility:hidden;
+			width:0;		
+		}
+		div{
+			display:inline;
+		}
+
+		
+	}
+	
+	.bio-card-lite-contacts {
+		float: left;
+		
+		.primary-contact {
+			margin-top: 17px;
+			margin-left: 15px;
+			padding-left: 15px;
+			border-left: solid 3px rgba($global-hue-lightest, 0.3);
+		}
+		
+		a {
+			color: $global-hue-teal;
+		}
+	}
+	
+	.primary-contact {
+		a {
+			&:hover {
+				color: $global-hue-lightest;
+			}
+		}
+	}
+
+	
+	
+	@media #{$global-bp-tablet} {
+		.bio-utility-options {
+			display: none;
+		}
+	}	
+	
+	@media #{$global-bp-mobile} {
+		display: none;
+	}
+}

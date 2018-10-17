@@ -1,0 +1,25 @@
+.event-detail {
+	padding: 20px;
+	background: $seconday-hue-lightest;
+	min-height:120px;
+	overflow: visible;
+	.content-utility-options {
+		height: auto;
+
+		&.event{
+		float:right;
+		width:200px;
+		position:relative;
+		top:-20px;
+		}
+	}
+
+	.article-details {
+		margin-bottom: 0;
+	}
+
+	.btn {
+		@extend .btn-calendar;
+
+	}
+}

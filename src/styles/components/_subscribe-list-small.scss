@@ -1,0 +1,19 @@
+.subscribe-list-small {
+	$box-size: 50px;
+
+	a {
+		&:first-child {
+			border-right: 1px solid $seconday-hue-lightest;
+		}
+		
+		&.facebook {
+			font-size: $box-size;
+		}
+	}
+
+	h4 {
+		height: $box-size;
+		line-height: $box-size;
+		vertical-align: middle;
+	}
+}

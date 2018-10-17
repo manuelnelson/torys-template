@@ -1,0 +1,21 @@
+.link-list {
+	li {
+		+ li {
+			padding-top: 15px;
+			margin-top: 15px;
+			border-top: solid 1px $seconday-hue-darker;
+		}
+	}
+	+ .link-list li{
+		padding-top: 15px;
+		margin-top: 15px;
+		border-top: solid 1px $seconday-hue-darker;	
+	}
+	a {
+		color: $seconday-hue-darkest;
+		
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}

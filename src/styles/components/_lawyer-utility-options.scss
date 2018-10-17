@@ -1,0 +1,11 @@
+.lawyer-utility-options {
+	margin-bottom: 20px;
+
+	span {
+
+		&:after {
+			content: '/';
+			margin: 0 3px 0 8px;
+		}
+	}
+}

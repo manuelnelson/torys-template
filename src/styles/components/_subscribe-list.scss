@@ -1,0 +1,47 @@
+.subscribe-list {
+	a {
+		$size: 92px;
+		
+		float: left;
+		width: 33.33334444%;
+		height: $size;
+		width: $size;
+		text-align: center;
+		background: #000;		
+		img{
+			height: $size;
+			width: $size;  
+			transition: all ease-in-out 0.3s;
+			&:hover {
+				opacity: 0.8;
+			}		
+		}
+		i {
+			line-height: $size;
+			vertical-align: middle;
+		}
+		
+	
+		&.rss {
+			color: #f16522;
+			font-size: 50px;
+		}
+		
+		&.mail {
+			color: $primary-hue-darkest;
+			font-size: 35px;
+			background: $seconday-hue-lightest;
+		}
+		
+		&.twitter {
+			color: #00abdd;
+			font-size: 50px;
+		}
+	}
+	
+	nav {
+		overflow: hidden;
+		display: inline-block;
+		border: solid 1px $seconday-hue-lightest;
+	}
+}

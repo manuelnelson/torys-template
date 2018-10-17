@@ -1,0 +1,20 @@
+.mega-menu-insights {
+	.mega-menu-content {
+		width: $megamenu-width-desktop;
+		padding: 20px 40px 20px 20px;
+		margin-left: -579px;
+	}
+	
+	.nav-callouts {
+		padding-top: 10px;
+	}
+}
+
+@media #{$global-bp-tablet} {
+	.mega-menu-insights {
+		.mega-menu-content {
+			width: $megamenu-width-tablet;
+			margin-left: -461px;
+		}
+	}
+}

@@ -1,0 +1,10 @@
+.bio-content-grid-main {
+	padding-left: 30px;
+	position: relative;
+}
+
+@media #{$global-bp-tablet}  {
+	.bio-content-grid-main {
+		padding-left: 0;
+	}
+}	

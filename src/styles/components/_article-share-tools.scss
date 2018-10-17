@@ -1,0 +1,33 @@
+.article-share-tools {
+	text-align: right;
+
+	.content-utility-options{
+		height: inherit;
+
+		nav{
+			a{
+				
+
+				&.share{
+					margin-right: 0;
+				}
+			}
+		}
+	}
+
+	.article-share-tool {
+		font-size: 24px;
+		line-height: 1;
+		font-weight: $font-weight-medium;
+		margin-right: 36px;
+		transition: color .3s;
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+		@media #{$global-bp-mobile}{
+			font-size: 20px; 
+		}
+	}
+
+}

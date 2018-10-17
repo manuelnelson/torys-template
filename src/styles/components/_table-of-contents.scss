@@ -1,0 +1,34 @@
+.table-of-contents {
+	// this box has unique colors...
+	
+	li {
+		background: #1e4155;
+		
+		+ li {
+			border-top: solid 1px rgba($global-hue-lightest, 0.3);
+		}
+	}
+	
+	a {
+		padding: 12px 20px;
+		font-size: 16px;
+		display: block;
+		color: $global-hue-lightest;
+		
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	span{
+		padding: 12px 20px;
+		font-size: 16px;
+		display: block;
+		color: $global-hue-lightest;	
+	}
+	
+	.active {
+		a, span {
+			color: #adcce3;
+		}
+	}
+}

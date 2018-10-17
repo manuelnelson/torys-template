@@ -1,0 +1,338 @@
+// carousel functional requirements
+.carousel,
+.carousel-wrapper { // wrapper is used so the carousel component can use padding and margin in respect to layer'd nodes
+	overflow: hidden;
+	position: relative;
+}
+
+.carousel-belt {
+	width: 100%;
+}
+
+.carousel-item {
+	float: left;
+	width: 100%;
+	position: relative;
+	
+	img {
+		&.mobile-img{
+		  display: none;
+		}
+		&.desktop-img{
+		  display:block;
+		}
+		&.linked:hover{
+			cursor: pointer;
+		}
+	}
+}
+
+.carousel-controls {
+	a {
+		cursor: pointer;
+	}
+}
+
+// carousel style
+.carousel-wrapper,
+.carousel-item {
+	height: 480px;
+}
+
+.carousel-controls-wrapper {
+	position: absolute; 
+	bottom: 0;
+	right: 0;	
+}
+.carousel-home{
+	.carousel-controls-wrapper {
+		width: 640px; 
+	}
+}
+.carousel-controls {
+	$arrow-margin: 10px;
+	
+	position: relative;
+	padding: 0 95px 0 40px;
+	text-align: center;
+	min-width: 320px;
+	background: rgba($seconday-hue-lightest, 0.9);
+	
+	[class*="-slide"] {
+		$size: 22px;
+		
+		margin-top: 20px;
+		margin-bottom: 20px;
+		display: inline-block;
+		height: $size;
+		line-height: $size;
+		color: $primary-hue-normal;
+		
+		i {
+			vertical-align: top;
+			line-height: $size;
+			width: 14px;
+		}
+	}
+	
+	.goto-slide {
+		font-size: 14px;
+		margin-left: 8px;
+		margin-right: 8px;
+		
+		.fa-circle-o {
+			display: none;
+		}
+		
+		&.active {
+			.fa-circle {
+				display: none;
+			}
+			
+			.fa-circle-o {
+				display: inline-block;
+			}
+		}
+	}	
+	
+	.previous-slide,
+	.next-slide {
+		font-size: 20px;
+		position: absolute;
+		top: 0;
+		width: 30px;
+	}
+	
+	.next-slide {
+		left: auto;
+		right: $arrow-margin * 7;
+	}
+	
+	.previous-slide {
+		left: $arrow-margin ;
+	}
+
+	.play-slide {
+		position: absolute;
+		right: $arrow-margin * 2;
+		border-left: 1px solid $primary-hue-normal;
+		padding-left: $arrow-margin * 2.5 ;
+	}
+	
+	.previous-slide,
+	.next-slide,
+	.play-slide,
+	.fa-circle {
+		&:hover {
+			color: $primary-hue-darkest;
+		}
+	}
+}
+
+.carousel-text {
+	opacity: 0;
+	transition: opacity ease-in-out 0.2s;
+	background: rgba($seconday-hue-lightest, 0.9);
+}
+
+.carousel-wrapper {
+	&:hover {
+		.carousel-text {
+			opacity: 1;
+		}
+	}
+}
+
+.carousel-trigger-text {
+	$height: 16px;
+	$padding: 15px;
+	$total-height: ($height + $padding * 2);
+	
+	background: rgba($seconday-hue-lightest, 0.9);
+	padding: 15px;
+	display: block;
+	position: absolute;
+	right: 0;
+	height: $total-height;
+	top: $total-height * -1;
+	cursor: pointer;
+	font-size: $height;
+	line-height: $height;
+	
+	span {
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+	
+	i {
+		font-size: 11px;
+		vertical-align: middle;
+		line-height: $height;
+
+		.carousel-force-text-visibility &:before{
+			content: '\f068';
+		}
+	}
+}
+
+.carousel-text-item {
+	padding: 15px 20px;
+	font-size: 20px;
+	line-height: 24px;
+	a{
+		font-size:16px;
+	}
+}
+
+@media #{$global-bp-tablet} {
+	.carousel-text {
+		opacity: 1;
+	}
+
+	.carousel {
+		&:not(.carousel-multi) {
+
+			.carousel-item {
+				height: 285px;
+			}
+
+			.carousel-wrapper {
+				height: 382px;
+				padding-bottom: 62px;
+			}
+
+			.carousel-text-item {
+				font-size: 18px;
+				opacity: 1;
+				transition: opacity 0.5s ease-in-out;
+
+				&.ng-hide {
+					opacity: 0;
+				}
+			}
+
+			.carousel-controls-wrapper {
+				width: 100%;
+			}
+
+			.carousel-controls {
+				background: rgba($seconday-hue-lightest, 1);
+			}
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	.carousel-text {
+		display: none;
+	}
+	
+	.carousel-force-text-visibility {
+		.carousel-text {
+			display: block;
+		}
+	}
+}
+
+@media #{$global-bp-mobile} {
+	.carousel-wrapper,
+	.carousel-item {
+		height: 330px;
+	}
+	
+	.carousel-controls-wrapper {
+		width: 100%;
+	}
+
+	.carousel-home {
+		.carousel-controls-wrapper {
+			width: 100%; 
+		}
+	}
+	
+	// @TODO remove this, section or `content-block` should be handling borders between components
+	.carousel {
+		margin-bottom: 10px;
+		padding-bottom: 10px;
+		border-bottom: solid 2px $seconday-hue-lightest;
+
+		&:not(.carousel-multi) {
+			.carousel-item {
+				height: auto;
+			}
+
+			.carousel-wrapper {
+				height: auto;
+				padding-bottom: 52px;
+			}
+
+			.carousel-text-item {
+				font-size: 16px;
+				padding: 15px;
+			}
+
+			.carousel-item {
+				overflow: hidden;
+			}
+		}
+	}
+	
+	.carousel-controls {
+		min-width: 0px;
+
+		[class*="-slide"] {
+			margin-top: 15px;
+			margin-bottom: 15px;
+		}
+	}
+	
+	// .carousel-item {
+	// 	img {
+	// 		max-height: 100%;
+	// 	}
+	// }
+	
+	.carousel-text {
+		display: none;
+	}
+	
+	.carousel-force-text-visibility {
+		.carousel-text {
+			display: block;
+		}
+	}
+}
+
+@media #{$global-bp-mobile-small} {
+	
+	.carousel {
+
+
+		&:not(.carousel-multi) {
+			//.carousel-item {
+			//	height: 285px;
+			//}
+            //
+			//.carousel-wrapper {
+			//	height: 337px;
+			//	padding-bottom: 52px;
+			//}
+
+
+			.carousel-item {
+				img {
+					&.mobile-img{
+					  display: block;
+					}
+					&.desktop-img{
+					  display:none;
+					}
+					//margin-left: -50%;
+					//width: 200%;
+				}
+			}
+		}
+	}
+}

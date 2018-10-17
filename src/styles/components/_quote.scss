@@ -1,0 +1,19 @@
+.quote {
+	position: relative;
+	min-height: 33px;
+	font-style: italic;
+	padding-left: 50px;
+	font-size: 22px;
+	line-height: 30px;
+	
+	&:before {
+		position: absolute;
+		font-family: Georgia, Times, "Times New Roman", serif;
+		font-size: 100px;
+		color: $global-hue-orange;
+		content: '\201C';
+		left: 0;
+		font-style: normal;
+		top: 32px;
+	}
+}

@@ -1,0 +1,120 @@
+﻿.content-grid-main  {
+
+	/* Link title */
+	.gsc-control-cse {
+		font-family: "franklin-gothic-urw", "Franklin Gothic Book", helvetica, arial, sans-serif; 
+	}
+
+	.gsc-control-cse .gs-spelling, 
+	.gsc-control-cse .gs-result .gs-title, 
+	.gsc-control-cse .gs-result .gs-title * {
+		font-size: 18px;
+		text-decoration: none;
+	}
+
+	.gsc-result .gs-title{
+		height: auto;
+	}
+
+	.gs-webResult.gs-result a.gs-title:link, 
+	.gs-webResult.gs-result a.gs-title:link b, 
+	.gs-imageResult a.gs-title:link, 
+	.gs-imageResult a.gs-title:link b {
+		color: $primary-hue-darker;
+		text-decoration: none;
+	}
+
+	.gs-webResult.gs-result a.gs-title:visited,
+  	.gs-webResult.gs-result a.gs-title:visited b,
+  	.gs-imageResult a.gs-title:visited,
+  	.gs-imageResult a.gs-title:visited b {
+    	color: $primary-hue-darker;
+     }
+
+	.gs-webResult.gs-result a.gs-title:hover, 
+	.gs-webResult.gs-result a.gs-title:hover b, 
+	.gs-imageResult a.gs-title:hover, 
+	.gs-imageResult a.gs-title:hover b {
+		color: $seconday-hue-darkest;  
+	}
+
+	.gsc-table-result, 
+	.gsc-thumbnail-inside, 
+	.gsc-url-top {
+	 	padding: 0;
+	}
+
+	/* related url */
+	.gs-webResult div.gs-visibleUrl,
+	.gs-imageResult div.gs-visibleUrl {
+		color: $seconday-hue-darkest;
+		font-size: 14px;
+	}
+
+	/* description */
+	.gs-webResult .gs-snippet, 
+	.gs-imageResult .gs-snippet,
+	.gs-fileFormatType {
+		color: $seconday-hue-darkest;
+	}
+
+	.gsc-control-cse, 
+	.gsc-control-cse .gsc-table-result {
+		font-size: 16px;
+		line-height: 20px;
+		font-family: "franklin-gothic-urw", "Franklin Gothic Book", helvetica, arial, sans-serif
+	}
+
+	/* Entry Structure */
+	.gsc-webResult .gsc-result {
+		padding: 15px 0;
+	}
+
+	/* Search box */
+	.gsc-input-box {
+		border-color: $seconday-hue-darkest;
+	}
+
+	.gsc-search-box-tools .gsc-search-box .gsc-input {
+		padding-right: 0;
+	}
+
+	.cse .gsc-control-cse, 
+	.gsc-control-cse {
+		padding: 0;
+	}
+
+	// Results label
+	.gsc-result-info {
+		padding-left: 0;
+	}
+
+	/* pagination */
+	.gsc-results .gsc-cursor-box {
+	 	margin-left: 0;
+	}
+
+	.gsc-results .gsc-cursor-box .gsc-cursor-page.gsc-cursor-current-page {
+		color: $seconday-hue-darkest;
+		font-size: 18px;
+	}
+
+	.gsc-results .gsc-cursor-box .gsc-cursor-page {
+		color: $primary-hue-darker;
+		padding-right: 12px;
+	}
+
+	.gsc-results .gsc-cursor-box .gsc-cursor-page:hover {
+		text-decoration: none;
+		color: $seconday-hue-darkest;
+	}
+
+	/* No results warning */
+	.gs-no-results-result .gs-snippet, 
+	.gs-error-result .gs-snippet {
+		font-size: 18px;
+		background-color: transparent;
+		border-color: $global-hue-lightest;
+		padding-left: 0;
+	}
+}

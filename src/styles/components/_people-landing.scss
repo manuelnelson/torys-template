@@ -1,0 +1,60 @@
+﻿.content-block .global-people-search{
+	.section-search {
+		position: relative;
+		padding-bottom: 5px;
+		
+		input {
+			width: 100%;
+			padding: 7px 12px;
+			background: $global-hue-lightest;
+			border: solid 1px #6e6e6e;
+		}
+
+		button {
+			background: none;
+			border: none;
+			position: absolute;
+			top: 7px;
+			right: 2px;
+			color: $seconday-hue-darkest;
+			font-size: 18px;
+		}
+	}
+	.input-line-item{
+		width:33%;
+		display:inline-block;
+		vertical-align:top;
+		padding-top:15px;
+		padding-right: 15px;
+		&.last{
+			margin-left: 1px;
+			padding-right: 0;
+		}
+		input {
+			width: 100%;
+			padding: 7px 12px;
+			background: $global-hue-lightest;
+			border: solid 1px #6e6e6e;
+			&.inputError{
+				border:solid 1px $global-hue-error;
+				color:$global-hue-error;
+			}
+		}
+		label{
+			&.inputError{
+				color:$global-hue-error;
+			}
+		}
+	}
+	.global-people-search-results .person{
+		height: 50px;
+	}
+}
+@media #{$global-bp-tablet}{
+	.content-block .global-people-search{
+		.input-line-item{
+			width:100%;
+			padding-right: 0;
+		}
+	}
+}

@@ -1,0 +1,106 @@
+.quarterly-section-header {
+    font-size: 59px;
+    font-weight: $font-weight-demi;
+    line-height: 1.1;
+    padding: 35px 0;
+    border-top: 12px solid transparent;
+
+    &.header-orange {
+        color: $color-orange-west-side;
+        border-color: $color-orange-west-side;
+    }
+
+    &.header-green {
+        color: $color-green-sea-nymph;
+        border-color: $color-green-sea-nymph;
+    }
+
+    &.header-blue {
+        color: $primary-hue-darkest;
+        border-color: $primary-hue-darkest;
+    }
+
+    &.header-grey {
+        color: $seconday-hue-darkest;
+        border-color: $seconday-hue-darkest;
+    }
+
+	&.previous {
+		&:hover {
+			color: #6e6e6e;
+		}
+	}
+    
+
+    a {
+        color: $primary-hue-darkest;
+
+        &:hover {
+            color: #6e6e6e;
+        }
+
+		.date{
+			&:after{
+				content:':';
+			}
+		}
+    }
+}
+
+.issue-view-all {
+    display:none;
+}
+
+.quarterly-link {
+    font-size: 28px;
+    font-weight: $font-weight-demi;
+    line-height: 1.4;
+    color: $primary-hue-darkest;
+
+    &.related-issue-link {
+        color: $primary-hue-normal;
+
+        &:hover {
+            color: #6e6e6e;
+        }
+    }
+}
+
+.quarterly-copy {
+    font-size: 36px;
+    color: $seconday-hue-darkest;
+    line-height: 1.1;
+
+	p{
+		font-size: 31px;
+		line-height: 1.1;
+	}
+}
+
+@media #{$global-bp-tablet} {
+    .quarterly-section-header {
+        font-size: 50px;
+    }
+
+    .quarterly-link {
+        font-size: 24px;
+    }
+
+    .quarterly-copy {
+        font-size: 32px;
+    }
+}
+
+@media #{$global-bp-mobile} {
+    .quarterly-section-header {
+        font-size: 44px;
+    }
+
+    .quarterly-link {
+        font-size: 20px;
+    }
+
+    .quarterly-copy {
+        font-size: 28px;
+    }
+}

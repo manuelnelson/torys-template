@@ -1,0 +1,19 @@
+.load-more{
+	width:100%;
+	background-color:$primary-hue-darkest;
+	color:$global-hue-lightest;	
+	height:45px;	
+	display:table;
+	margin-top:20px;
+	span{
+		width:100%;
+		display:table-cell;
+		padding: 0 40px 0 20px;
+		vertical-align:middle;
+		height:100%;	
+		text-align: center;
+		&:hover{
+			cursor: pointer;
+		}
+	}
+}

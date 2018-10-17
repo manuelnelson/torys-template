@@ -1,0 +1,27 @@
+.image-caption-list-small{
+	
+	.description {
+		> div {
+			padding: 12px;
+		}
+	}
+
+	h6 {
+		font-size: 14px;
+	}
+
+	.image-item {
+		width: 139px;
+		height: 139px;
+	}
+}
+
+@media #{$global-bp-tablet} {
+	.image-caption-list-small{
+		
+		.image-item {
+			width: 160px;
+			height: 160px;
+		}
+	}
+}

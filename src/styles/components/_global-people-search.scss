@@ -1,0 +1,119 @@
+.global-people-search {
+	.alphabetic-filter {
+		overflow: hidden;
+		padding-bottom: 15px;
+		margin-bottom: 30px;
+		border-bottom: solid 3px $seconday-hue-darker;
+		
+		.letter {
+			width: 7.69230769%;
+			float: left;
+			display: block;
+			text-transform: uppercase;
+			height: 30px;
+			margin-bottom: 15px;
+			text-align: center;
+			font-size: 20px;
+			color: $seconday-hue-lighter;
+			
+			&.active {
+				color: $primary-hue-normal;
+			}
+			&.active:hover {
+				cursor: pointer;
+				color: $global-hue-darkest;				
+			}			
+			
+		}
+		a:hover {
+			cursor: default;
+		}
+	}
+	.advanced-search a{
+		margin-left:3%; 
+		&:hover{
+			cursor: pointer;
+		}
+	}
+	.text-search {
+		input {
+			width: 100%;
+			padding: 7px 12px;
+			background: $global-hue-lightest;
+			border: none;
+		}
+	}
+}
+
+.global-people-search-results {
+	$item-height: 80px;
+	
+	background: $global-hue-lightest;
+	
+	.person {
+		overflow: hidden;
+		height: $item-height;
+		border-top: solid 1px $seconday-hue-lightest;
+		cursor: pointer;
+	}
+	
+	.image {
+		height: 60px;
+		width: 60px;
+		margin-left:10px;
+		img{
+			width:100%;
+		}
+	}
+	
+	.description {
+		padding-left: 20px;
+		font-size: 18px;
+		line-height: 24px;
+		color: $seconday-hue-darkest;
+	}
+	
+	.location {
+		padding-top: 15px;
+	}
+	
+	.name,
+	.location {
+		color: $primary-hue-normal;
+	}
+	
+	footer {
+		border-top: solid 1px $seconday-hue-lightest;
+		
+		a {
+			line-height: 50px;
+			padding: 0 15px;
+			display: inline-block;
+		}
+	}
+	
+	.location {
+		padding-right: 20px;
+	}
+	
+	&:hover {
+		.person {
+			opacity: 0.6;
+			transition: opacity ease-in-out 0.1s;
+			
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.global-people-search-no-results {
+	padding-top: 20px;
+	text-align: center;
+	color: $seconday-hue-darkest;
+	
+	i {
+		margin-right: 10px;
+	}
+}

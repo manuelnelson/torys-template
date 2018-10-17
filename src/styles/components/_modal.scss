@@ -1,0 +1,122 @@
+.modal-bg {
+	background-color: $seconday-hue-lightest;
+	opacity: .9;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0; 
+	bottom:0;
+	height: 100%;
+	display: none;
+	visibility: hidden;
+	
+	transition: opacity ease-in-out 0.5s;
+	
+	// solves repaint issues
+	-webkit-transform: translate3d(0, 0, 0);
+}
+
+.modal {
+	width: $modal-width;
+	position: fixed;
+	top: $modal-topoffset;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	height: 75%;
+	background-color: $global-hue-lightest; 
+	overflow: hidden;
+	visibility: hidden;
+
+	transition: opacity ease-in-out 0.5s;
+
+
+
+	.people-search-results{
+		.person{
+			height:100%;
+		}
+	}
+}
+
+.modal-visible {
+	
+	&.modal {
+		z-index: 26;
+		visibility: visible;
+	}
+	
+	& + .modal-bg {
+		z-index: 25;
+		display: block;
+		visibility: visible;
+	}
+}
+
+.modal-header {
+	background-color: $primary-hue-darkest;
+	color: $seconday-hue-lightest;
+	padding: 10px 20px;
+
+
+	h2 {
+		padding-bottom: 0;
+	}
+}
+
+.modal-close {
+	color: $seconday-hue-lightest;
+	cursor: pointer;
+}
+
+.modal-content {
+	padding: 20px 25px 20px;
+	height: 92%;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	margin-top: 50px;
+	overflow-y: scroll;
+}
+
+
+
+
+@media #{$global-bp-tablet} {
+	.modal {
+		width: 640px;
+	}
+}
+
+@media #{$global-bp-mobile} {
+	.modal{
+		width: 100%;
+		height:100%;
+		top:0;
+	}
+
+	.modal-content {
+		position: relative;
+		height: calc(100% - 30px);
+		margin-top: 0;
+	}
+
+	.modal-wrapper {
+		height:	100%
+	}
+
+	.person{
+		.person-details {
+			float: none;
+			width: 100%;
+		}
+
+		.person-location { 
+			float: left;
+			text-align: left;
+			width: 50%;
+		}
+	}
+}
+
+

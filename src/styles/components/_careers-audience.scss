@@ -1,0 +1,41 @@
+.audience-controls {
+	position: relative;
+	display: table;
+	width: 100%;
+	height: 60px;
+
+	.fa-angle-left {
+		margin-right: 5px;
+	}
+
+	.btn {
+		width: 50%;
+		display: table-cell;
+		vertical-align: middle;
+		position: relative;
+		height: 100%;
+
+		&.next-page{
+			text-align: right;
+			border-left: 1px solid $seconday-hue-lightest;
+		}
+	}
+	
+}
+
+@media #{$global-bp-tablet} {
+	.audience-controls {
+		text-align: left;
+		
+		.btn {
+			// width: 100%;
+			// display: block;
+
+			&.next-page {
+				text-align: left;
+				border-right: 0 none;
+				border-top: 1px solid $seconday-hue-lightest;
+			}
+		}
+	}
+}

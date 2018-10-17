@@ -1,0 +1,30 @@
+.image-caption-list {
+	overflow: hidden;
+	
+	.image-item {
+		float: left;
+		width: 160px;
+		height: 160px;
+		overflow: hidden;
+		cursor: pointer;
+
+		img {
+			height:100%
+		}
+	}
+	
+	.description-overlay,
+	.description {
+		height: 100%;
+	}
+	
+	.description > div {
+		position: absolute;
+		bottom: 0;
+		padding: 15px;
+		left: 0;
+		font-size: 16px;
+		color: $global-hue-lightest;
+		cursor: pointer;
+	}
+}

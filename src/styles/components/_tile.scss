@@ -1,0 +1,51 @@
+.tile {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+
+	h2 {
+		font-weight: 300;
+		padding-bottom: 0;
+	}
+
+	&:before {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: 1;
+		background: $global-hue-darkest;
+		content: '';
+	}
+}
+
+.tile-content {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	transition: opacity ease-in-out 0.2s;
+	z-index: 2;
+	position: relative;
+	&:hover{
+		cursor:pointer;
+	}
+}
+
+@media #{$global-bp-mobile} {
+	.tile-grid .tile-content {
+		height: auto;
+		min-height: 320px;
+	}
+
+	.tile-grid [data-type="3"] {
+		//display: none;
+	}
+}
+
+@import "tiles/tile-social.scss";
+@import "tiles/tile-article.scss";
+@import "tiles/tile-image.scss";
+@import "tiles/tile-video.scss";
+@import "tiles/tile-number-list.scss";

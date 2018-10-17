@@ -1,0 +1,25 @@
+.search-filter-links {
+	h3 {
+		padding-bottom: 10px;
+		margin-bottom: 10px;
+		border-bottom: solid 1px $seconday-hue-light;
+	}
+	
+	a {
+		line-height: 30px;
+	}
+	
+	.more-btn-wrapper {
+		margin-top: 7px;
+	}
+}
+.filter{
+	&.inactive{
+		.search-filter-links{
+			a {
+				color:$seconday-hue-darkest;
+				cursor:default;
+			}
+		}
+	}
+}

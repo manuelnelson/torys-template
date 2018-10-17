@@ -1,0 +1,145 @@
+.article-content-grid {
+	$vertical-spacing: 40px;
+
+	display: flex;
+	justify-content: space-between;
+
+	.col-main {
+		width: calc(66.66% - 20px);
+	}
+
+	.col-aside {
+		width: calc(33.33% - 20px);
+	}
+
+	.article-tags {
+		margin-top: $vertical-spacing / 2;
+	}
+
+	.article-tags-container {
+		margin-top: 10px;
+	}
+
+	.article-tag {
+		&:after {
+			content: '|';
+			margin: 0 5px;
+		}
+
+		&:last-of-type {
+			&:after {
+				content: none;
+			}
+		}
+	}
+
+	.professional-contacts {
+		margin-top: $vertical-spacing;
+	}
+
+	.professional-contacts-prompt {
+		font-size: 28px;
+		font-weight: $font-weight-medium;
+	}
+
+	.professional-contacts-container {
+		margin-top: 10px;
+		display: flex;
+	}
+
+	.article-source {
+		margin-top: $vertical-spacing;
+		line-height: 1.25;
+
+		> * {
+			margin-top: 16px;
+		}
+	}
+
+	.article-source-header {
+		font-size: 36px;
+		font-weight: $font-weight-demi;
+		color: $primary-hue-darkest;
+	}
+
+	.article-source-issue {
+		font-size: 24px;
+		font-weight: $font-weight-demi;
+		color: #6e6e6e;
+
+		&:hover{
+			text-decoration: underline;
+		}
+	}
+
+	.article-source-info {
+		font-size: 24px;
+	}
+
+	.section-header {
+		font-size: 28px;
+		font-weight: $font-weight-medium;
+	}
+
+	.related-content {
+		margin-top: $vertical-spacing;
+
+		&:first-of-type {
+			margin-top: 0;
+		}
+	}
+
+	.related-links {
+		margin-top: $vertical-spacing / 2;
+		font-weight: $font-weight-medium;
+	}
+
+	.related-link-container {
+		&:first-of-type {
+			border-top: none;
+			margin-top: 0;
+			padding-top: 0;
+		}
+	}
+
+	.related-link {
+		font-weight: $font-weight-normal;
+	}
+
+	.social-links {
+		.related-links {
+			display: flex;
+		}
+
+		.related-link-container {
+			border: 1px solid $seconday-hue-normal;
+			transition: opacity .3s;
+			width: 33.33%;
+			&:hover {
+				opacity: .75;
+			}
+		}
+
+		.related-link {
+			text-align: center;
+			display: block;
+		}
+
+		.link-icon {
+			max-width: 100%;
+		}
+	}
+
+	@media #{$global-bp-tablet}{
+		display: block;
+
+		.col-main {
+			width: 100%;
+		}
+
+		.col-aside {
+			margin-top: $vertical-spacing;
+			width: 100%;
+		}
+	}
+}

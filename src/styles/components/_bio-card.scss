@@ -1,0 +1,314 @@
+$bio-card-height: 360px;
+$bio-card-spacing: 30px;
+$bio-card-education-spacing: 20px;
+$border-color: rgba($global-hue-lightest, 0.3);
+
+.bio-card {
+	@extend %clearfix;
+
+	-webkit-transform: translate3d(0, 0, 0); // solves repaint issue on bio-card-lite leaving traces of itself
+	position: relative;
+	z-index: 50;
+	
+	.bio-card-content {
+		width: 100%;
+		height: $bio-card-height;
+		position: absolute;
+		background: $primary-hue-darkest;
+		left: 0;
+		color: $global-hue-lightest;
+	}
+	.suffix{		
+		font-size: 27px;
+		&:before{
+			content:", ";
+		}
+	}
+	.bio-title {
+		display: block;
+		position: relative;
+		top: -6px;
+	}
+	.content-grid{
+		overflow:visible;
+	}
+	.bio-card-content-inner {
+		padding: $bio-card-spacing;
+		overflow: hidden;
+		position: relative;
+		min-height: 318px;
+	}
+	a {
+		color: $global-hue-teal;
+	}
+	.email:after{
+		content: ' | ';
+	}
+	.label {
+		color: $global-hue-teal;
+		a:hover{
+			color: $global-hue-lightest;
+		}
+	}
+	h1 {
+		font-weight: 400;
+	}
+	
+	.bio-content-grid-widgets {
+		height: $bio-card-height;
+		overflow:hidden;
+		img {
+			height: $bio-card-height;
+			display: block;
+			width: 640px;
+			margin-left: -160px;
+		}
+	}
+	
+	.title {
+		font-size: 18px;
+		display: block;
+	}
+	
+	h1,
+	.title,
+	.primary-contact {
+		padding-bottom: 10px;
+		overflow-wrap: break-word;
+	}
+	
+	.primary-contact {
+		a {
+			&:hover {
+				color: $global-hue-lightest;
+			}
+		}
+	}
+	
+	.secondary-contact {
+		line-height: 26px;
+		font-size: 14px;
+	}
+
+	.bio-social-media {
+		position: absolute;
+		border-top: solid 3px $border-color;
+		padding-top: 10px;
+		bottom: 8px;
+
+		> a  {
+			font-size: 18px;
+			color: $global-hue-lightest;
+			margin-right: 5px;
+		}
+	}
+	
+	.bio-primary-info {
+		float: left;
+		width: 259px;
+		display:inline;
+	}
+	
+	.bio-info {
+		width: 290px;
+		padding-left: 30px;
+		margin-left: 30px;
+		border-left: solid 1px rgba($global-hue-lightest, 0.3);
+		float: right;
+		display:inline;
+	}
+	
+	.bio-info-item {
+		display: block;
+		font-size: 15px;
+		
+		+ .bio-info-item {
+			padding-top: 8px;
+		}
+	}
+	
+	.bio-info {
+		max-height: 258px;
+		overflow-y: auto;
+		-webkit-transform: translate3d(0, 0, 0); // solves repaint issue on bio-card-lite leaving traces of itself
+	}
+	
+	.bio-info,
+	.bio-info-alternate {
+		h4 {
+			font-weight: 400;
+			text-transform: uppercase;
+			padding-bottom: 5px;
+		}
+		
+		p + h4 {
+			padding-top: 20px;
+		}
+	}
+	
+	.bio-info-alternate {
+		background: $primary-hue-darkest;
+		color: $global-hue-lightest;
+		padding: $bio-card-spacing;
+		overflow: hidden;
+	}
+	
+	.bio-utility-options {
+		position: absolute;
+		width: 100%;
+		padding: 10px 30px;
+		line-height: 22px;
+		background: $global-hue-teal;
+		bottom: 0;
+		left: 0;
+		.share-box{
+			left: 0;
+			top:20px;
+
+			.share {
+				color: $global-hue-lightest;
+			}
+			
+			div{
+				display:block;
+			}
+		}
+
+		 > a {
+			color: $global-hue-lightest;
+			margin-right: 10px;
+		}
+		a.share{		
+			color: $global-hue-lightest;
+			margin-right: 10px;
+		}
+		.addthis_toolbox .at16nc{
+			visibility:hidden;
+			width:0;
+		}
+
+		div{
+			display:inline;
+		}
+	}
+	
+	.bio-name-container {
+		padding: 15px $bio-card-spacing;
+		background: $primary-hue-darkest;
+		color: $global-hue-lightest;
+		
+		h1 {
+			padding-bottom: 0;
+		}
+	}
+	
+	.bio-education {
+		margin-bottom: $bio-card-education-spacing;
+	}
+}
+
+@media #{$global-bp-tablet} {
+	.bio-card {
+		.bio-card-content {
+			background: $primary-hue-darkest;
+			height: $bio-card-height;
+			position: relative;
+		}
+
+		.bio-card-content-inner {
+			min-height: 258px;
+		}
+
+		.bio-social-media {
+			position: static;
+			margin-top: 15px;
+			display: inline-block;
+		}
+	
+		.bio-content-grid-widgets {
+			img {
+				margin-left: 0; // assumes image has a 640 width
+			}
+		}
+		
+		.bio-utility-options {
+			display: none;
+		}
+		
+		.bio-card-content {
+			height: auto;
+		}
+		
+		.bio-info {
+			max-height: none;
+		}
+	}
+}
+
+@media #{$global-bp-mobile} {
+	.bio-card {
+		.bio-card-content {
+			width: auto;
+			height: auto;
+			position: static;			
+		}
+		
+		[class*="bio-content-grid-"] {
+			float: none;
+			width: auto;
+		}
+		
+		.bio-card-content {
+			.bio-name,
+			.bio-title {
+				display: none;
+			}
+		}
+
+		.bio-content-grid-widgets{
+			height: auto;
+		}
+		
+		.bio-info,
+		.bio-primary-info {
+			float: none;
+			width: auto;
+		}
+		
+		.bio-info {
+			padding-left: 0;
+			margin: 20px 0 0 0;
+			border-left: none;
+		}
+	
+		.bio-education {
+			margin-bottom: $bio-card-education-spacing;
+		}
+		
+		.bio-title {
+			top: auto;
+		}
+	}
+
+	.bio-social-media {
+		margin-bottom: 10px;
+	}
+	
+	.bio-education,
+	.bio-certs {
+		float: none;
+		width: auto;
+	}
+	
+	.bio-certs {
+		padding-left: 0;
+	}
+
+	.bio-name-container,
+	.bio-card .bio-content-grid-main,
+	.bio-card .bio-content-grid-widgets img {
+		max-width: 100%;
+		width: auto;
+		height: auto;
+	}
+}

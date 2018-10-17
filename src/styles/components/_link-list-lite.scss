@@ -1,0 +1,30 @@
+.link-list-lite {
+	div,
+	li {
+		+ div,
+		+ li {
+			padding-top: 7px;
+		}
+	}
+
+	.modal-trigger {
+		margin-top: 7px;
+		display: inline-block;
+	}
+
+	span {
+		text-transform: uppercase;
+	}
+
+	small {
+		display: block;
+	}
+
+	& + & {
+		padding-top: 15px;
+	}
+	+ .view-all-trigger{
+		margin-top:7px;
+	}
+
+}

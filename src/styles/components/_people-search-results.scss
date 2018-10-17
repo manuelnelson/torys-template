@@ -1,0 +1,159 @@
+﻿.search-tools {
+	position: fixed;
+	z-index: 21;
+	background-color: $global-hue-lightest;
+
+	-webkit-transform: translate3d(0, 0, 0);
+
+
+	+ .ng-hide + .people-search-results,
+	+ .search-results-filter {
+		padding-top: 55px;
+	}
+
+	+ .ng-hide + .people-search-results {
+		margin-top: 0;
+	}
+
+}
+
+.people-search-results {
+	$item-height: 100px;
+	
+	background: $global-hue-lightest;
+	margin-top:20px;
+
+    overflow-y: auto;
+
+	.person {
+		overflow: hidden;
+		min-height: $item-height;
+		border-top: solid 1px $seconday-hue-lightest;
+		cursor: pointer;
+	}
+	
+	.image {
+		height: 80px;
+		width: 80px;
+		img{
+			width:100%
+		}
+	}
+	
+	.description{
+		padding-left:20px;
+		font-size: 18px;
+		line-height: 24px;
+		color: $seconday-hue-darkest;
+		width:40%;
+	}
+	
+	
+	.name {
+		color: $primary-hue-normal;
+	}
+	
+	footer {
+		border-top: solid 1px $seconday-hue-lightest;
+		
+		a {
+			line-height: 50px;
+			padding: 0 15px;
+			display: inline-block;
+		}
+	}
+	
+	.location {
+		padding-right: 20px;
+		width: 45%;
+
+		span {
+			display: inline-block;
+			min-width: 69px;
+		}
+	}
+	
+	&:hover {
+		.person {
+			opacity: 1;
+			transition: opacity ease-in-out 0.1s;
+			
+			&:hover {
+				opacity: 0.6;
+			}
+		}
+	}
+}
+
+.person {
+	border-top: 1px solid $seconday-hue-lightest;
+	padding: 15px 0;
+
+	&:first-child {
+		border-top:	none;
+	}
+
+	.person-details {
+		width: 70%;
+	}
+
+	.person-location {
+		width: 30%;
+		text-align: right;
+	}
+
+	.person-image {
+		width: 120px;
+		padding-right: 20px;
+
+		img {
+			max-width: 100%;
+		}
+	}
+}
+
+@media #{$global-bp-tablet} {
+	.search-tools {
+		z-index: 11;
+	}
+
+	.people-search-results {
+		.location {
+			width: auto;
+		}
+	}
+}
+
+@media #{$global-bp-mobile} {
+	.search-tools {
+		margin: 0;
+		position:static;
+	}
+
+	.people-search-results {
+		.person {
+			height: auto;
+		}
+		.image{
+			height:140px;
+		}
+		.description {
+			min-width: 70%;
+		}
+		.location {
+			padding-left:20px;
+			padding-right: 0;
+			float: left;
+		}
+
+		.modal-content & {
+			
+			.image {
+				height: auto;
+			}
+			.location {
+				width: 70%;
+			}
+		}
+	}
+}

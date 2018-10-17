@@ -1,0 +1,161 @@
+.mega-menu {
+	position: absolute;
+	width: 100%;
+	z-index: 50;
+	transition:visibility ease-out 0.3s,opacity ease-out 0.3s;
+	visibility: hidden;
+	opacity:0;
+	&.inline {
+		display: block;
+		z-index: 1;
+		width: auto;
+		position: static;
+		background: $seconday-hue-lightest;
+		padding: 20px;
+	}
+	&.servicesearch {
+		display: block;
+		z-index: 1;
+		width: auto;
+		position: static;
+		background: $seconday-hue-lightest;
+		border: 1px solid;
+	}
+	
+	.block-glyph {
+		width: 100%;
+		height: 30px;
+		background: $seconday-hue-lightest;
+		border: solid 1px $seconday-hue-light;
+		border-bottom: none;
+		position: relative;
+		top: 1px;
+	}
+	
+	.nav-callouts {		
+		.btn {
+			+ .btn {
+				margin-top: 6px;
+			}
+		}
+	}
+
+
+	nav {
+		+ .nav-callouts {
+			margin-top: 20px;
+			padding-top: 20px;
+			border-top: solid 3px $seconday-hue-darker;
+		}
+	}
+	
+	.page-sections {
+		> .pull-left {
+			width: 48%;
+			
+			&:first-child {
+				width: 52%;
+				padding-right: 20px;
+			}
+		}
+		
+		
+		+ .page-sections {
+			margin-top: 20px;
+			padding-top: 20px;
+			border-top: solid 3px $seconday-hue-darker;
+		}
+	}
+	
+	
+	h3 {
+		line-height: 38px;
+		padding-bottom: 3px;
+	}
+	
+	nav a {
+		line-height: 26px;
+		font-size: 16px;
+		
+		&:hover {
+			color: $global-hue-darkest;
+		}
+	}
+	
+	.section-search {
+		&.service-section-search {
+			padding-bottom:0px;
+		}
+		padding-bottom: 10px;
+		position: relative;
+		clear:both;
+		input {
+			width: 100%;
+			padding: 7px 12px;
+			background: $global-hue-lightest;
+			border: none;
+		}
+		
+		button {
+			background: none;
+			border: none;
+			position: absolute;
+			top: 7px;
+			right: 2px;
+			color: $seconday-hue-darkest;
+			font-size: 18px;
+			cursor: pointer;
+
+			&:hover {
+				color: $global-hue-darkest;
+			}
+		}
+
+	}
+	
+	.mega-menu-content {
+		border: solid 1px $seconday-hue-light;
+	}
+	
+	.btn {
+		&:hover {
+			background: $global-hue-lightest;
+		}
+	}
+}
+
+.mega-menu-content {
+	background: $seconday-hue-lightest;
+}
+
+@media #{$global-bp-tablet} {
+	.mega-menu {
+
+		.block-glyph {
+			height: 27px;
+		}
+	}
+}
+
+@media #{$global-bp-mobile} {
+	.mega-menu {
+		.page-sections {
+			> .pull-left {
+				width: auto;
+				float: none;
+
+				&:first-child {
+					width: auto;
+					padding-right: 0;
+				}
+			}
+
+
+			+ .page-sections {
+				margin-top: 20px;
+				padding-top: 20px;
+				border-top: solid 3px $seconday-hue-darker;
+			}
+		}
+	}
+}

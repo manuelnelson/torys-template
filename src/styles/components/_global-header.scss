@@ -1,0 +1,393 @@
+.global-header {
+	padding: 15px 0 40px 0;
+	background: $global-hue-lightest;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+	transition: border ease-in-out 0.5s;
+	height: $global-header-height-desktop;
+	
+	-webkit-transform: translate3d(0, 0, 0);
+	
+	&.header-scrolled {
+		box-shadow: 5px -5px 20px 0px #979797;
+		filter: progid:DXImageTransform.Microsoft.Shadow(color=#0000FF,direction=45);
+	}
+	
+	.primary-nav {
+		font-size: 18px;
+		
+		> ul,
+		> ul > li {
+			float: left;
+			position: relative;
+		}
+		
+		> ul > li {
+			.close-menu{
+				display:none;
+			}
+			&:hover {
+				.mega-menu {
+					display: block;
+					visibility: visible;
+					opacity:1;
+				}
+
+			}
+			&.open {
+				.touchDevice & .mega-menu {
+					.close-menu {
+						float:right;
+						position: relative;
+						right: -25px;
+						top: -10px;						
+						cursor:pointer;
+						display:inline-block;
+						&:after{
+							clear:both;
+						}
+					}
+				}
+			}
+			&:not(.open) {
+				.touchDevice &:hover {
+					.mega-menu {
+						display: none;
+						visibility: hidden;
+						opacity:1;
+					}
+				}
+			}
+			&.open &:active{
+				.touchDevice & .mega-menu {
+					display: block;
+					visibility: visible;
+					opacity:1;
+				}	
+		
+			}
+		}
+	}
+	
+	.primary-link {
+		margin-left: 15px;
+		
+		> a {
+			color: $primary-hue-normal;
+			text-transform: uppercase;
+			font-size: 18px;
+			display: block;
+			padding: 0 5px;
+			line-height: 34px;
+		}
+					
+		&:first-child {
+			margin-left: 0;
+			width: 70px;
+		}
+
+
+		// TODO _- will have to come back and rewrite this to allow consistend placement of megamenu
+		// Since the width of the font varies across browser, and since the placement of the megamenu is dependent 
+		// on the width of it's parent li, you have inconsistent placement of the megamenu 
+		&:nth-child(5n+2) {
+			width: 93px;
+		}
+
+		&:nth-child(5n+3) {
+			width: 83px;
+		}
+
+		&:nth-child(5n+4) {
+			width: 81px;
+		}
+		
+		&:hover,
+		&.active {
+			> a {
+				color: $seconday-hue-darkest;
+			}
+		}
+	}
+	
+	.logo {
+		margin-top: 20px;
+		
+		img {
+			display: block;
+		}
+	}
+	
+	.header-search {
+		padding-left: 42px;
+		form {
+			background: $seconday-hue-lightest;
+			border: solid 1px $seconday-hue-light;
+		}
+		
+		input {
+			$padding: 12px;
+			background: $seconday-hue-lightest;
+			height: 32px;
+			border: 0 none;
+			padding: 0 $padding;
+			width: 104px + ($padding * 2);
+		}
+
+		button {
+			background-color: transparent;
+			margin: 0;
+			width: 30px;
+			font-size: 14px;
+			&:hover {
+				cursor:pointer;
+			}
+		}
+	}
+	
+	.menu-trigger {
+		color: $primary-hue-normal;
+		display: block;
+		
+		span {
+			display: block;
+		}
+	}
+	
+	.menu-text {
+		text-transform: uppercase;
+		text-align: center;
+		font-size: 10px;
+		font-weight: bold;
+		letter-spacing: 2px;
+		margin-top: 9px;
+		line-height: 7px;
+	}
+	
+	// font-awesome is too small and it's preferable if we don't use an image
+	.menu-bars {
+		width: 34px;
+		
+		.bar {
+			height: 4px;
+			background: $primary-hue-normal;
+			
+			+ .bar {
+				margin-top: 6px;
+			}
+		}
+	}
+	
+	input {
+		&::-webkit-input-placeholder {
+			color: $primary-hue-normal;
+		}
+
+		&:-moz-placeholder { /* Firefox 18- */
+			color: $primary-hue-normal;
+		}
+
+		&::-moz-placeholder {  /* Firefox 19+ */
+			color: $primary-hue-normal;
+		}
+
+		&:-ms-input-placeholder {  
+			color: $primary-hue-normal;
+		}
+	}
+}
+
+[class*="global-header"] {
+	&:before,
+	&:after {
+		content:"";
+		display:table;
+	}
+	
+	&:after {
+		clear: both;
+	}
+}
+
+.global-header-top {
+	padding-bottom: 20px;
+
+	li {
+		margin-left: 15px;
+		float: left;
+		line-height: 19px;
+		
+		&:hover {
+			> a {
+				color: $global-hue-darkest;
+			}
+		}
+	}
+		
+	a {
+		color: $seconday-hue-darkest;
+	}
+	
+	.search {
+		color: $primary-hue-normal;
+	}
+	
+	.menu {
+		a {
+			color: $primary-hue-normal;
+			display: inline-block;
+
+			&:hover {
+				color: $seconday-hue-darkest;
+			}
+			
+			~ a {
+				margin-top: 5px;
+			}
+		}
+	}
+}
+
+.global-header-bottom {
+	position: relative;
+	top: 10px;
+}
+
+
+// fixed settings
+.global-wrapper {
+	padding-top: $global-header-height-desktop;
+}
+
+@media #{$global-bp-tablet} {
+	.global-header {
+		padding-top: 20px;
+		height: $global-header-height-tablet;
+	}
+	
+	.header-search {
+		display: none;
+	}
+	
+	.global-header-top {
+		li {
+			margin-left: 20px;
+		}
+
+		.tablet-search-box {
+			margin-left: 0;
+
+			&.active {
+				margin-left: 20px;
+			}
+		}
+
+	}
+	
+	// fixed settings
+	.global-wrapper {
+		padding-top: $global-header-height-tablet;
+	}
+	
+	.tablet-search-box {
+		$height: 24px;
+		
+		transition: all ease-in-out 0.3s;
+		position: relative;
+		margin-top: -2px;
+		
+		input {
+			width: 200px;
+			padding: 0 30px 0 10px;
+			height: $height;
+			border: none;
+		}
+		
+		button {
+			padding: 0;
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: $height;
+			height: $height;
+			background: $global-hue-lightest;
+			border: none;
+			
+			i {
+				line-height: $height;
+				vertical-align: middle;
+				font-size: 16px;
+			}
+		}
+	}	
+	
+	.tablet-search-trigger {
+		transition: all ease-in-out 0.09s;
+
+		.search
+		{
+			cursor:pointer;
+		}
+	}
+	
+	.tablet-search-trigger,
+	.tablet-search-box {
+		max-width: 0px;
+		overflow: hidden;
+		-webkit-transform: translate3d(0, 0, 0);
+		
+		&.active {
+			max-width: 300px;
+		}
+	}
+
+	.global-header-top .tablet-search-trigger {
+		margin-left: 0;
+		
+		&.active {
+			margin-left: 20px;
+		}
+	}
+}
+
+
+@media #{$global-bp-mobile} {
+	.global-header {
+		padding: 25px 16px;
+		position: static;
+		height: auto;
+		
+		.logo {
+			margin: 0;
+			
+			img {
+				height: 40px;
+			}
+		}
+	
+		&.header-scrolled {
+			-webkit-box-shadow: none;
+			box-shadow: none;
+		}
+	}
+	
+	// fixed settings
+	.global-wrapper {
+		padding-top: 0;
+	}
+}
+
+.homepage {
+	padding: 0;
+	
+	.global-header {
+		position: relative;
+		
+		&.header-scrolled {
+			box-shadow: none;
+		}
+	}
+}

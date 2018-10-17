@@ -1,0 +1,81 @@
+﻿.page-tools {
+	position: relative;
+	float: right;
+	//color: #8a8a8a;
+	.share {
+		float: left;
+		cursor: pointer;
+		&:hover{
+		//color: #003764;
+		}
+    	i {
+			padding-left: 5px;
+		}
+	}
+	.pdf {
+		float: left;
+		padding: 5px;
+		cursor: pointer;
+		a {
+			color: #8a8a8a;
+			&:hover {
+				color: #003764;
+			}
+		}	
+	}
+}
+.share-box {
+	opacity: 1;
+	position: absolute;
+	background: #e6e6e6;
+	z-index: 50;
+	width: 175px;
+	right: 0%;
+	transition: visibility ease-out 0.2s,opacity ease-out 0.2s;	
+	visibility:hidden;
+	&.show{
+		transition: visibility ease-out 0.2s, opacity ease-out .2s;
+		opacity:1;
+		visibility:visible;
+	}
+	div {
+		display:block;
+		margin: 10px;
+		padding: 7px 10px 7px 20px;
+		background: #fff;
+		border: 1px solid #c2c2c2;
+		font-weight: 700;
+		font-size: 16px;
+		text-transform: uppercase;
+		line-height:20px;
+		vertical-align:middle;
+		a {
+			color: #003764;
+			&:hover {
+				color: #9b9b9b;
+			}
+		}
+		i {
+			padding: 2px;
+			font-size: 1.25em;
+			float: right;
+			position:relative;
+		}
+	}
+}	
+
+.bio-card {
+	.content-grid{
+		.bio-utility-options div.page-tools{
+			display:block;
+			float:left;
+			.share-box{
+				display:block;
+			}
+		}
+	}
+}
+
+
+
+

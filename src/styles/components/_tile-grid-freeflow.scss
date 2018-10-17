@@ -1,0 +1,20 @@
+.tile-grid-freeflow {
+	.pull-left {
+		width: 50%;
+		float: left;
+	}
+	
+	[ng-non-bindable] {
+		display: none;
+	}
+	
+	@media #{$global-bp-mobile} { 
+		.pull-left {
+			display: none;
+		}
+		
+		[ng-non-bindable] {
+			display: block;
+		}
+	}
+}

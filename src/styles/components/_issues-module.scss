@@ -1,0 +1,451 @@
+.issues-module {
+	$section-spacing: 50px;
+	$hero-spacing: 30px;
+
+
+	&.top-spacing {
+		padding: 150px 0;
+
+		@media #{$global-bp-mobile} {
+			padding: 130px 0 50px;
+		}
+	} 
+
+	.issue-item {
+		+ .issue-item {
+			margin-top: 100px;
+		}
+
+		&.issue-view-all {
+			display: none;
+		} 
+
+		&.current{
+			width: 60em;
+			margin: 0 auto;
+			position: relative;
+
+			.label{
+				padding-bottom: 10px;
+				font-weight: 600;
+				font-size: 24px;
+				color: #000;
+			}
+
+			.hero-image-container{
+				height: 12.5em;
+				width: 12.5em;
+				min-height: 0em;
+				position: relative;
+				display: inline-block;
+			}
+
+			.content-container{				
+				width: 75%;
+				padding-left: 1em;
+				display: inline-block;
+				position: relative;
+				vertical-align: top;
+
+				.quarterly-section-header{
+					font-size: 2.75em;
+					padding: 0.5em 0;
+
+					.date{
+						display: inline-block;
+					}
+				}
+
+				.quarterly-copy{
+
+					p{
+						font-size: .75em;
+					}
+				}
+			}
+
+			@media #{$global-bp-tablet}{
+				width: 40em;
+				
+
+				.hero-image-container{
+					height: 9.5em;
+					width: 9.5em;
+					margin: 0;
+
+				}
+
+				.content-container{
+					height: 9.5em;
+					
+
+					.quarterly-section-header{
+						font-size: 2em;
+						padding: 0.3em 0;
+					}
+
+					.quarterly-copy{
+						p{
+							font-size: 0.75em;
+						}
+					}
+				}
+			}
+
+			@media #{$global-bp-mobile}{
+				width: 20em;
+				.issue-top-content{
+					width: 100%;
+				}
+
+				.label{
+					font-size: 20px;
+				}
+
+				.hero-image-container{
+					display: none;
+				}
+
+				.content-container{
+					display: block;
+					padding-left: 0;
+					width: 100%;
+
+					.quarterly-section-header{
+						font-size: 1.5em;
+
+						.date{
+							display: block;
+						}
+					}
+
+					.quarterly-copy{
+						font-size: 21px;
+					}
+				}
+
+			}
+
+			@media #{$global-bp-mobile-small} {
+				width: 18em;
+			}
+		}
+	}
+
+	.issue-items{
+		&.quarterly-load-more{
+			margin-top: 100px;
+		}
+
+		.label {
+			padding-top: 50px;
+			padding-bottom: 10px;
+			font-weight: $font-weight-demi;
+			font-size: 24px;
+			color: $global-hue-darkest;
+		}
+	}
+
+
+	.issue-top-content {
+		display: flex;
+		justify-content: space-between;
+
+		@media (max-width: 980px){
+			display: block !important;
+		}
+	} 
+
+	.hero-image-container {
+		margin: 0;
+		padding: 0;
+		width: calc(50% - #{$hero-spacing});
+		background-position: 0% 50%;
+		background-size: cover;
+		margin-right: $hero-spacing;
+		height: 475px;
+
+		.overlay{
+			height: 100%;
+		}
+	} 
+
+	.image-right {
+		
+		.hero-image-container {
+			order: 1;
+			margin-left: $hero-spacing;
+			margin-right: 0;
+		}
+	}
+
+	.content-container {
+		@media (min-width: 981px) {
+			width: 50%;
+		}
+
+		flex-grow: 1;
+
+		.background-image{
+			margin-left: 0;
+			margin-top: 20px;
+			width: 100%;
+
+			@media (min-width: 981px) {
+				margin-left: 20px;
+				margin-top: 0;
+			}
+			@media (max-width: 981px){
+				width: 100%;
+				min-height: 275px;
+			}
+
+			.overlay{
+				min-height: 475px;
+				margin-left: 0px;
+
+				@media (max-width: 981px){
+					min-height: 275px;
+					height: 275px;
+					
+				}
+			}
+		}
+
+		.overlay{
+			height: 100%;
+			margin-left: 20px;
+		}
+	}
+
+	.issue-quote-container {
+		width: 50%;
+		margin-left: 20px;
+		padding: 0 0 0 20px;
+		position: relative;
+		color: $primary-hue-darkest;
+		font-weight: $font-weight-demi;
+	}
+
+	.issue-quote {
+		font-size: 44px;
+		line-height: 1.1;
+	}
+
+	.quote-source {
+		font-size: 24px;
+		margin-top: 20px;
+
+		&:before {
+			content: "-";
+			margin-right: 10px;
+		}
+	}
+
+	.image-text-overlay	{
+		margin: 0;
+		padding: 0;
+		position: relative;
+		margin-top: $section-spacing;
+		min-height: 300px;
+		display: block;
+
+		.overlay{
+			min-height: 300px;
+		}
+
+		.background-image {
+			display: block;
+			max-width: 100%;
+		}
+
+		.text-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			color: $global-hue-lightest;
+			padding: 35px 40px;
+			font-weight: $font-weight-demi;
+			font-size: 28px;
+
+			&:hover{
+				color: #6e6e6e;
+			}
+		}
+	}
+
+	.quarterly-link-grid {
+		margin-top: $section-spacing;
+
+		&.triple-column{
+			margin-top: 80px;
+		}
+	}
+
+	.share-tools {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 80px;
+	}
+
+	.share-prompt {
+		font-size: 36px;
+		font-weight: $font-weight-demi;
+		line-height: 1.1;
+		max-width: 380px;
+	}
+
+	.share-links {
+		text-align: right;
+		.content-utility-options{  
+			height: inherit;
+		 
+			nav {
+				text-align: center;
+
+				.page-tools{
+					float: none;
+				
+					.share{
+						float: none; 
+						color: $primary-hue-darkest;
+					}
+
+					
+				}
+
+				
+
+			}
+		}
+	}
+
+	.share-link {
+		color: $primary-hue-darkest;
+		font-weight: $font-weight-medium;
+		font-size: 22px;
+		line-height: 1;
+		min-width: 200px;
+		margin: 10px;
+		display: inline-block;
+		border: 2px solid $primary-hue-darkest;
+		text-align: center;
+		padding: 20px;
+		transition: color .3s, border-color .3s;
+
+
+		&:hover {
+			color: $seconday-hue-darkest;
+			border-color: $seconday-hue-darkest;
+		}
+
+		.share{
+			float: none;
+			color: #002b51;
+		}
+
+		.share-box{
+			left: 0px;
+			top: 65px;
+		}
+	}
+
+	.load-more-container {
+		text-align: center;
+	}
+
+	.btn-load-more {
+		margin: 0;
+		background-color: $primary-hue-darkest;
+		color: $global-hue-lightest;
+		padding: 20px;
+		min-width: 200px;
+		font-size: 22px;
+		font-weight: $font-weight-medium;
+		margin: 100px 0;
+
+		&:hover{
+			background: #fff;
+			color: $primary-hue-normal;
+		}
+	}
+
+	@media #{$global-bp-tablet} {
+		.issue-quote {
+			font-size: 36px;
+		}
+
+		.quote-source {
+			font-size: 20px;
+		}
+
+		.image-right .hero-image-container,
+		.hero-image-container {
+			display: block;
+			margin-left: 0;
+			width: 100%;
+			max-height: 100%;
+			order: 0;
+			margin-bottom: 30px;
+		}
+	}
+
+
+	@media #{$global-bp-mobile} {
+		.issue-top-content {
+			flex-wrap: wrap;
+		}
+
+		.image-right .hero-image-container,
+		.hero-image-container {
+			min-height: 285px;
+		}
+
+		.issue-quote-container {
+			width: 100%;
+			margin-top: $section-spacing;
+		}
+
+		.issue-quote {
+			font-size: 30px;
+		}
+
+		.quote-source {
+			font-size: 18px;
+		}
+
+		.image-text-overlay {
+			.text-overlay {
+				font-size: 21px;
+				padding: 15px 20px;
+			}
+			@media #{$global-bp-mobile}{
+				min-height: 200px;
+			}
+
+			.overlay{
+				min-height: 200px;
+			}
+		}
+
+		.share-prompt {
+			font-size: 28px;
+			margin-top: 10px;
+		}
+
+		
+	}
+
+	@media #{$global-bp-mobile-small} {
+		.share-prompt {
+			font-size: 24px;
+		}
+
+		.share-link {
+			font-size: 18px;
+			min-width: 170px;
+		}
+	}
+}
+

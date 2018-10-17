@@ -1,0 +1,210 @@
+@media print {
+  * {
+	    text-shadow: none !important;
+	    color: #000 !important;
+	    background: transparent !important;
+	    box-shadow: none !important; 
+	}
+	body{
+		margin:0;
+		padding:0;
+	}
+	 pre,
+  blockquote {
+    
+    page-break-inside: avoid; }
+
+  thead {
+    display: table-header-group; }
+
+  tr,
+  img {
+    page-break-inside: avoid; }
+
+  img {
+    max-width: 100% !important; 
+  }
+
+  .site-main img  {
+     width: auto !important;
+  }
+
+  p,
+  h1,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3; 
+  }
+  .global-wrapper{
+	padding-top: 20px;
+  }
+  .global-header{
+	position:relative;
+	 .print-logo{
+		display:block;
+	}
+  }
+
+  select {
+    background: #fff !important; }
+
+  .navbar {
+    display: none; }
+
+  .table td,
+  .table th {
+    background-color: #fff !important; }
+
+  .btn > .caret,
+  .dropup > .btn > .caret {
+    border-top-color: #000 !important; }
+
+  .label {
+    border: 1px solid #000; }
+
+  .table {
+    border-collapse: collapse !important; }
+  
+  header .wrapper,
+  .mobile-nav-wrapper,
+  footer,
+  .tabs-mod,
+  .section--tabs,
+  .btn-accordion,
+  .nav-regions,
+  .pdf-link,
+  .section-nav
+  .prof-overview .contact-list,
+  .readmore-link,
+  .language-pdf,
+  .loading-image,
+  .insight .mod.mod-accordion.js-mod-accordion.pros,
+  .insight .rel-articles,
+  .view-all-trigger,
+  .section--related .rel-articles,    
+  .more-btn-wrapper,
+  .download,
+  .subscribe-list,
+  .load-more,
+  .btn,
+  .tile-grid-freeflow,
+  .nav-content-grid-widgets,
+  .content-grid-widgets,
+  .content-grid-main .article-details,
+  .image-carousel,
+  .video-carousel,
+  .bio-card-lite,
+
+  .grid-output,
+  .bio-card .vcard,
+  .accordion-hide-content h1 .fa-angle-up, .accordion-hide-content h1 .fa-angle-down,
+  .read-more:after, .pdf-link:after, .exp-listing__link:after, .box li a:after, .box__abstract p a:after{
+  	display: none !important;
+  }
+
+  .content-block + .content-block{
+	padding-top:20px;
+  }
+ .show-more-hide{
+	display:inline-block !important;
+ }
+  body {
+  	margin: 0;
+  }
+
+  span.label{
+	border: none;
+  }
+
+  .printlogo {
+  	display: block;
+  	width: 250px;
+  }
+
+  .site-banner {
+  	padding-left: 0;
+
+  	.page-title {
+  		padding: 0;
+  	}
+  }
+
+  //publication
+  .table-of-contents li a{
+	padding:12px 0;
+  }
+
+  .col--main {
+  	margin-bottom: 0;
+  }
+
+  .site-main--interior {
+  	padding-left: 0;
+  	padding-right: 0;
+  	margin-bottom: 0;
+  	border-bottom: 0 none;
+  }
+
+  .section--related {
+  	padding: 0;
+  }
+
+  .article__img {
+  	> img {
+  		width: auto;
+  	}
+  }
+  .rel-articleslist .listing__link-wrap > img, 
+  .box__link-img > img {
+  	width: auto;
+  }
+
+  //Work Detail
+  .event-detail{
+	padding:0;
+	min-height:0;
+	.content-utility-options{
+  		display: none !important;
+	}	
+	h1{
+		padding-bottom:0;
+	  }
+  }
+
+  //services layout
+  section[data-office-detail-modal]{
+  	display: none !important;
+  }
+
+  //professional layout
+  .accordion-hide-content .accordion-content{
+	display:block;
+  }
+  .bio-card .bio-card-content-inner{
+	padding:0;
+	min-height:0px;
+  }
+  h1.bio-name{
+	padding: 0 0 10px 0;
+  }
+  .bio-education{
+	margin-top:10px;
+	float:left;
+	width:50%;
+  }
+  .bio-certs{
+	margin-top:10px;
+	float:left;
+	width:50%;
+  }
+  .bio-card .bio-name-container{
+	padding:15px 0;
+  }
+  .bio-content-grid-widgets img{
+	margin-bottom:10px;
+  }
+  .bio-card .email:after{
+		content: ' ';
+  }
+}

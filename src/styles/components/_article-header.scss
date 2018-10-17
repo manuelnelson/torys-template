@@ -1,0 +1,94 @@
+.article-header {
+	$spacing: 16px;
+	$border-style: 2px solid $global-hue-lightest;
+	$vertical-spacing: 40px;
+
+	background-size: cover;
+	position: 50% 50%;
+	background-position: top center;
+	color: $global-hue-lightest;
+	padding: 100px 16px;
+
+	.article-info {
+		font-size: 24px;
+		line-height: 1;
+		display: flex;
+		font-weight: $font-weight-medium;
+		line-height: 1;
+	}
+
+	.article-date {
+		padding-right: $spacing;
+		margin-right: $spacing;
+		border-right: $border-style;
+		display: inline-block;
+	}
+
+	.article-authors {
+		display: inline-flex;
+	}
+
+	.article-author {
+		padding-right: $spacing;
+		margin-right: $spacing;
+		border-right: $border-style;
+		display: inline-block;
+		
+
+		&:last-of-type {
+			border-right: none;
+			margin-right: 0px;
+			padding-right: none;
+		}
+
+	}
+
+	.article-title {
+		margin-top: $vertical-spacing;
+		font-size: 64px;
+		line-height: 1;
+		font-weight: $font-weight-demi;
+	}
+
+	.article-issue {
+		margin-top: $vertical-spacing;
+		font-size: 24px;
+		line-height: 1;
+		font-weight: $font-weight-medium;
+		line-height: 1;
+	}
+
+	@media #{$global-bp-mobile} {
+		.article-info,
+		.article-issue{
+			font-size: 20px;
+		}
+
+		.article-title {
+			font-size: 48px;
+		}
+	}
+
+	@media #{$global-bp-mobile-small} {
+		padding: 60px 16px;
+
+		.article-info {
+			display: block;
+		}
+
+		.article-date {
+			border-right: none;
+		}
+
+		.article-authors {
+			margin-top: 16px;
+		}
+	}
+
+	.overlay{
+	    position: static;
+		padding: 120px 16px 0px;
+		top: 100px;
+		background-color: rgba(0, 0, 0, 0.6);
+	}
+}

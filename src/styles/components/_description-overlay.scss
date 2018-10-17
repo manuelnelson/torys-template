@@ -1,0 +1,80 @@
+@mixin description-overlay-color($bg-color, $text-color) {
+	.description {
+		background: rgba($bg-color, 0.9);
+		color: $text-color;
+		a {
+			color: $text-color;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+	
+	p {
+		a {
+			color: $text-color;
+			
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+.description-overlay {
+	position: absolute;
+	z-index: 1;
+	bottom: -100%;
+	left: 0;
+	width: 100%;
+	transition: all ease-in-out 0.35s;
+	
+	.description {
+		padding: 30px;
+	}
+	
+	p {
+		a {
+			color: $global-hue-lightest;
+		}
+	}
+	
+	@include description-overlay-color($primary-hue-darkest, $global-hue-lightest);
+}
+
+.description-overlay-wrapper {
+	position: relative;
+	
+	&:hover {
+		.description-overlay {
+			bottom: 0;
+		}
+	}
+}
+
+.description-overlay-type-a {
+	@include description-overlay-color($seconday-hue-lightest, $primary-hue-normal);
+}
+
+.description-overlay-type-b {
+	@include description-overlay-color($primary-hue-darkest, $global-hue-lightest);
+}
+
+.description-overlay-type-c {
+	@include description-overlay-color($seconday-hue-lightest, $seconday-hue-darkest);
+}
+
+.description-overlay-type-d {
+	@include description-overlay-color($seconday-hue-darkest, $seconday-hue-lightest);
+}
+
+.description-overlay-type-e {
+	@include description-overlay-color($global-hue-orange, $seconday-hue-lightest);
+}
+@media #{$global-bp-mobile} {
+	.description-overlay {
+		.description {
+			padding: 5px 10px;
+		}
+	}
+}

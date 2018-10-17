@@ -1,0 +1,59 @@
+.tile-number-list {
+	$size: 48px;
+	
+	.tile-content {
+		// if variations are needed, use classnames to change the color
+		background: $global-hue-orange;
+	}
+	
+	.list-headline,
+	div,
+	a {
+		color: $global-hue-lightest;
+	}
+	
+	.list-headline {
+		padding-bottom: 20px;
+	}
+	
+	li {
+		position: relative;
+		padding-left: 30px;
+		display: table;
+		width: 80%;
+		height: $size;
+		
+		&:before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: $size;
+			height: $size;
+			border-radius: $size;
+			background: $global-hue-lightest;
+			color: $global-hue-orange;
+			vertical-align: middle;
+			line-height: $size;
+			text-align: center;
+			font-size: 18px;
+			font-weight: 500;
+			content: counter(li);
+		}
+		
+		div {
+			display: table-cell;
+			vertical-align: middle;
+			position: relative;
+			height: 100%;
+			width: 90%;
+		}
+		
+		+ li {
+			margin-top: 12px;
+		}
+	}
+	
+	.tile-content {
+		padding: 30px;
+	}
+}

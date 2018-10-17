@@ -1,0 +1,27 @@
+.search-results {
+	small {
+		padding: 5px 0;
+	}
+	
+	.results {
+		padding: 30px 0;
+		position: relative;
+		min-height:200px;
+	}
+	.search-header{
+		width:100%;
+		padding:8px 20px;
+		background-color:$primary-hue-darkest;
+		margin-bottom:15px;
+		p{
+			color:$global-hue-lightest;
+		}
+		span:hover{
+			cursor:pointer;
+		}
+	}
+	.infinite-scroll{
+		margin: 10px 0 0 20px;
+		font-size: 20px;
+	}
+}

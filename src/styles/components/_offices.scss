@@ -1,0 +1,27 @@
+.office {
+
+	& > .pull-left {
+		width: 60%;
+	}
+
+	& > .pull-right {
+		width: 40%;			
+	}
+
+	@media #{$global-bp-mobile} {
+		& > .pull-left,
+		& > .pull-right {
+			width: 100%;
+		}
+	}
+
+	img {
+		max-width: 100%;
+        height: auto !important;
+		@media #{$global-bp-mobile} {
+			margin-bottom: 15px;
+		}
+	}
+}
+
+

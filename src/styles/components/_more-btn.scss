@@ -1,0 +1,26 @@
+.more-btn-wrapper {
+	font-size: 16px;
+	display: block;
+	margin-top:20px;
+}
+ 
+.more-btn {
+	$height: 20px;
+	
+	display: inline-block;
+	color: $primary-hue-normal;
+	text-transform: uppercase;
+	font-weight: 500;
+	line-height: $height;
+	
+	i {
+		font-size: 13px;
+		margin-right: 5px;
+		line-height: $height;
+		vertical-align: middle;
+	}
+}
+.show-more-hide{
+	display:none !important;
+}
+div[data-show-more-text] p{margin-top:20px;}

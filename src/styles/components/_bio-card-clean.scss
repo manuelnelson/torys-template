@@ -1,0 +1,33 @@
+$bio-card-height: 360px;
+$background-card: rgba($primary-hue-darkest, 0.9);
+
+.bio-card-clean {
+	.bio-content-grid-main {
+		height: $bio-card-height;
+		width: 100%;
+		background: no-repeat center bottom;
+		background-size: cover;
+	}
+
+	.bio-card-content {
+		padding-right: 30%;
+		background-color: $background-card;
+	}
+
+}
+
+@media #{$global-bp-tablet} {
+	.bio-card-clean {
+
+		.bio-content-grid-main {
+			height: auto;
+		}
+		.bio-card-content {
+			padding-right: 0;
+		}
+	}
+}
+
+@media #{$global-bp-mobile} {
+
+}

@@ -1,0 +1,83 @@
+// # app configs
+$config-site-width: 960px;
+
+// # colors
+
+// blue
+$primary-hue-darkest: #002b51;
+$primary-hue-darker: #006fa6;
+$primary-hue-dark: #006fa6;
+$primary-hue-normal: #006fa6;
+$primary-hue-light: #006fa6;
+$primary-hue-lighter: #006fa6;
+$primary-hue-lightest: #006fa6;
+
+// grey
+$seconday-hue-darkest: #6e6e6e;
+$seconday-hue-darker: #d4d4d4; // @TODO this is lighter.. fix this!
+$seconday-hue-dark: #e6e6e6;
+$seconday-hue-normal: #e6e6e6;
+$seconday-hue-light: #c5c5c5;
+$seconday-hue-lighter: #b0b0b0;
+$seconday-hue-lightest: #e6e6e6;
+
+// global
+$global-hue-darkest: #000;
+$global-hue-lightest: #fff;
+
+//Other colors - names from http://www.color-blindness.com/color-name-hue/
+$color-green-sea-nymph: #91B1A6;
+$color-grey-shady-lady: #979797;
+$color-orange-west-side: #E96A25;
+
+// if there's any other similarly colors that match below make a new 7-layer key
+$global-hue-orange: #e96800;
+$global-hue-teal: #8fb1a4;
+$global-hue-error: #A40707;
+
+
+
+// # fonts
+@font-face {
+  font-family: 'SF NS Display';
+  // src: url('../fonts/sfnsdisplay-regular-webfont.eot');
+  // src: url('../fonts/sfnsdisplay-regular-webfont.eot?#iefix') format('embedded-opentype'),
+  //      url('../fonts/sfnsdisplay-regular-webfont.woff2') format('woff2'),
+  //      url('../fonts/sfnsdisplay-regular-webfont.woff') format('woff'),
+  //      url('../fonts/sfnsdisplay-regular-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+  //      url('../fonts/sfnsdisplay-regular-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+$global-primary-font: 'franklin-gothic-urw', 'Franklin Gothic Book', helvetica, arial, sans-serif;
+$global-secondary-font: 'SF NS Display', arial;
+$font-weight-demi: 600;
+$font-weight-medium: 500;
+$font-weight-normal: 400;
+
+// # breakpoints
+$global-max-width-tablet: 980px;
+$global-max-width-mobile: 655px;
+$global-max-width-mobile-small: 525px;
+$global-max-width-mobile-very-small: 380px;
+$global-max-height-narrow: 767px;
+
+$global-bp-tablet: "(max-width: #{$global-max-width-tablet})";
+$global-bp-mobile: "(max-width: #{$global-max-width-mobile})";
+$global-bp-mobile-small: "(max-width: #{$global-max-width-mobile-small})";
+$global-bp-narrow-height: "(max-height: #{$global-max-height-narrow})";
+$global-bp-mobile-very-small: "(max-width: #{$global-max-width-mobile-very-small})";
+
+// # header height per bp (this is so the body can push the content below the "fixed" `<header />`)
+$global-header-height-desktop: 128px;
+$global-header-height-tablet: 133px;
+
+// Mega Menu Width for desktop
+$megamenu-width-desktop: 960px;
+$megamenu-width-tablet: 640px;
+
+// Assigning to global variable "$modal-topoffset" by default is deprecated.
+// In future versions of Sass, this will create a new local variable.
+// If you want to assign to the global variable, use "$modal-topoffset: 150px !global" instead.
+$modal-width: 800px; //!global;
+$modal-maxheight: 60%; //!global;
+$modal-topoffset: 150px; //!global;

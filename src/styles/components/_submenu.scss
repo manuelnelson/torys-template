@@ -1,0 +1,32 @@
+.submenu {
+	$height: 38px;
+	
+	.headline {
+		display: inline-block;
+		margin-right: 20px;
+		line-height: $height;
+		padding: 0;
+		vertical-align: top;
+	}
+	
+	nav {
+		display: inline-block;
+		vertical-align: top;
+		height: $height;
+		
+		a {
+			display: inline-block;
+			color: $seconday-hue-darkest;
+			background: $seconday-hue-lightest;
+			font-size: 16px;
+			line-height: $height;
+			padding: 0 10px;
+			
+			&:hover,
+			&.active {
+				background: $seconday-hue-darkest;
+				color: $seconday-hue-lightest;
+			}
+		}
+	}
+}

@@ -1,0 +1,41 @@
+.carousel-wrapper-small {
+	margin-left: 1px;
+
+	&.carousel-wrapper,
+	.carousel-item {
+		height: auto !important;
+		
+		img{
+			width:100%
+		}
+	}
+
+	.carousel-text {
+		opacity: 1;
+		min-height: 100px;
+	}
+
+	.carousel-controls-wrapper {
+		left: 0;
+		clear: both;
+		position: relative;
+		width: 100%;
+	}
+}
+
+@media #{$global-bp-tablet} {
+	.carousel-wrapper-small {
+		margin-left: 0;
+	}
+}
+
+@media #{$global-bp-mobile} {
+	.carousel-wrapper-small {
+		
+		.carousel-item {
+			img {
+				max-width: 100%;
+			}
+		}
+	}
+}

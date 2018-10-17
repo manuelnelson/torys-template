@@ -1,0 +1,15 @@
+.quarterly-banner {
+	.banner-text {
+		text-align: center;
+		font-size: 67px;
+		padding: 60px 10px;
+		color: $primary-hue-darkest;
+	}
+
+	img {
+		max-width: 100%;
+		display: block;
+		margin-right: auto;
+		margin-left: auto;
+	}
+}

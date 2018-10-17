@@ -1,0 +1,127 @@
+$tile-grid-height: 640px;
+$tile-height-half: $tile-grid-height / 2;
+$tile-height-fifth: $tile-grid-height / 5;
+
+.tile-grid {
+	overflow: hidden;
+	position: relative;
+	
+	.tile-content {
+		position: absolute;
+	}
+	
+	.row,
+	.column {
+		overflow: hidden;
+		position: relative;
+	}
+	
+	.row {
+		float: left;
+		width: 100%;
+	}
+	
+	.column {
+		float: left;
+		width: 50%;
+		//background: $global-hue-darkest; // used for hover
+		
+		&.right-primary {
+			float: right;
+		}
+	}
+	
+	.column-large {
+		width: 66.66666666%
+	}
+	
+	.column-small {
+		width: 33.33334444%
+	}
+	
+	.column-xsmall {
+		width: 25%
+	}
+	
+	.row-large {
+		height: $tile-grid-height;
+	}
+	
+	.row-small {
+		height: $tile-height-half;
+	}
+	
+	.row-xsmall {
+		height: $tile-height-fifth;
+	}
+
+	@media #{$global-bp-tablet} {
+		.column-large,
+		.column-small {
+			width: 100%;
+		}
+	
+		.column-small {
+			.row-small {
+			width: 50%;
+			
+				&.row-uneven {
+					width: 100%;
+				}
+			}
+			
+			&.column-uneven {
+				.row-small {
+					width: 100%;
+				}
+			}
+			
+			.row-large {
+				width: 100%;
+				height: auto;
+
+				.tile-content {
+					position: relative;
+				}
+			}
+		}
+		
+		.row-half-tablet {
+			width: 50%;
+		}
+		
+		.column-half-mobile {
+			width: 50%;
+
+			&:last-child {
+				width: 100%;
+			}
+			
+			.row-small {
+				width: 100%;
+			}
+		}
+	}
+	
+	@media #{$global-bp-mobile} { 
+		.column,
+		.row,
+		.column-small .row-small,
+		.column-small .row-large {
+			float: none;
+			width: auto;
+			height: auto;
+		}
+		
+		.tile-content {
+			position: relative;
+			background:white;
+		}
+		
+		.tile-hidden {
+			display: none;
+		}
+
+
+	}
+}

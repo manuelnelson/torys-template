@@ -1,0 +1,216 @@
+$mobile-nav-width: 80%;
+$mobile-nav-background: $seconday-hue-lightest;
+$mobile-nav-fx-duration: 0.3s;
+
+.mobile-nav {
+	padding: 20px 20px 20px 40px;
+	position: relative;
+	transition: all ease-in-out $mobile-nav-fx-duration + ($mobile-nav-fx-duration * 0.25);
+	
+	nav {
+		position: relative;
+		overflow: hidden;
+		
+		a {
+			&.uppercase{
+				text-transform:uppercase !important;
+			}
+			font-size: 22px;
+			display: block;
+			position: relative;
+			z-index: 1;
+			opacity: 0;
+			transition: all ease-out $mobile-nav-fx-duration;
+		}
+		
+		.is-visible > li > a {
+			opacity: 1;
+		}
+		
+		li {
+			width: 100%;
+			
+			+ li {
+				> a {
+					padding-top: 10px;
+					margin-top: 10px;
+					border-top: solid 1px $seconday-hue-light;
+					
+					i {
+						margin-top: -4px;
+					}
+				}
+			}
+			
+			i {
+				position: absolute;
+				top: 50%;
+				right: 0;
+				margin-top: -5px;
+			}
+		}
+		
+		> ul > li  ul {
+			left: 100%;
+			position: absolute;
+			top: 0;
+			transition: all ease-in-out $mobile-nav-fx-duration;
+			background: $mobile-nav-background;
+			z-index: 2;
+			width: 100%;
+			
+			&.active {
+				left: 0%;
+			}
+		}
+		
+		i {
+			font-size: 20px;
+			float: right;
+			margin-top: 3px;
+			color: $primary-hue-normal;
+		}
+	}
+
+	.utility-wrapper {
+		height: 60px;
+		padding-bottom: 20px;
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.text-search,
+	.back-btn {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		transition: all ease-in-out 0.4s;
+	}
+	
+	.text-search {
+		position: relative;
+		
+		input {
+			width: 100%;
+			height: 40px;
+			padding-left: 10px;
+			padding-right: 40px;
+		}
+		
+		button {
+			position: absolute;
+			right: 0;
+			top: 0;
+			background: none;
+			border: none;
+			width: 40px;
+			height: 40px;
+			text-align: center;
+			padding: 0;
+			&:hover{
+				cursor:pointer;
+			}
+		}
+		
+		i {
+			line-height: 40px;
+			vertical-align: middle;
+			font-size: 18px;
+		}
+	}
+	
+	.back-btn {
+		line-height: 40px;
+		font-size: 20px;
+		opacity: 0;
+		cursor: pointer;
+		display: block;
+
+		&.active {
+			opacity: 1;
+		}
+		
+		i {
+			margin-right: 8px;
+		}
+	}
+	
+	.back-btn.active + .text-search {
+		left: -100%;
+		opacity: 0;
+	}
+}
+
+.mobile-nav-wrapper {
+	position: fixed;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	padding-left: 100 - $mobile-nav-width;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	background: $mobile-nav-background;
+	visibility: hidden;
+	transition: visibility .2s ease-in;
+}
+
+// needed so mobile nav doesn't flash
+.mobile-nav-open + .mobile-nav-wrapper {
+	visibility: visible;
+}
+
+// add extra properties to the global wrapper so it behaves nicely with the mobile-nav layer
+.global-wrapper {
+	position: relative;
+	z-index: 10;
+	transition: opacity ease-in-out $mobile-nav-fx-duration, transform ease-in-out $mobile-nav-fx-duration, left ease-in-out $mobile-nav-fx-duration, right ease-in-out $mobile-nav-fx-duration;
+	-webkit-transition: opacity ease-in-out $mobile-nav-fx-duration, -webkit-transform ease-in-out $mobile-nav-fx-duration, left ease-in-out $mobile-nav-fx-duration, right ease-in-out $mobile-nav-fx-duration;
+	box-shadow: -3px -10px 40px $global-hue-darkest;
+	min-height: 100%; // so u never see the mobile nav layer
+}
+
+// animation conditions
+.csstransforms3d .global-wrapper {
+	//-webkit-transform: translate3d(0, 0, 0);
+	//transform: translate3d(0, 0, 0);
+}
+
+.csstransforms3d .mobile-nav {
+	-webkit-transform: translate3d((100 - $mobile-nav-width) * -1, 0, 0);
+	transform: translate3d((100 - $mobile-nav-width) * -1, 0, 0);
+}
+
+.no-csstransforms3d .mobile-nav {
+	right: 100 - $mobile-nav-width;
+}
+
+.no-csstransforms3d .global-wrapper {
+	left: 0px;
+}
+
+@media #{$global-bp-mobile} {
+	.csstransforms3d .global-wrapper.mobile-nav-open {
+		-webkit-transform: translate3d($mobile-nav-width * -1, 0, 0);
+		transform: translate3d($mobile-nav-width * -1, 0, 0);
+	}
+
+	// animation conditions with no 3d support
+	.no-csstransforms3d .global-wrapper.mobile-nav-open {
+		left: $mobile-nav-width * -1;
+	}
+	
+	.global-wrapper.mobile-nav-open {
+		opacity: 0.8;
+	}
+	
+	.csstransforms3d .global-wrapper.mobile-nav-open + .mobile-nav-wrapper .mobile-nav {
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+	
+	.no-csstransforms3d .global-wrapper.mobile-nav-open + .mobile-nav-wrapper .mobile-nav {
+		right: 0px;
+	}
+}

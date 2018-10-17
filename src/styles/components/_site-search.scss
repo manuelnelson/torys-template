@@ -1,0 +1,151 @@
+﻿.search-results {
+
+    .input-container {
+        height: 35px;
+
+        .gsc-input {
+            width: 100%;
+            height: 100%;
+            padding: 0px 8px;
+            border: 1px solid #D9D9D9;
+            border-color: #6e6e6e;
+        }
+    }
+
+    .gsc-result-info-container {
+        padding: 5px 0;
+        border-bottom: 1px solid #E9E9E9;
+
+        .gsc-result-info {
+            padding: 8px 0;
+            font-size: 13px;
+            margin: 10px 0;
+        }
+    }
+
+    .gsc-result {
+        padding: 15px 0;
+
+        .gs-title {
+            font-size: 18px;
+            text-decoration: none;
+
+            a {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                display: block;
+                padding-bottom: 2px;
+            }
+        }
+
+        .gsc-url-top {
+            color: #6e6e6e;
+            font-size: 14px;
+
+            .gs-visibleUrl {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                display: block;
+                padding-bottom: 2px;
+            }
+        }
+
+        .gs-snippet {
+            color: #6e6e6e;
+
+            .highlight {
+                font-weight: bold;
+            }
+        }
+
+        .gs-result-container {
+            display: flex;
+
+            .gs-image {
+                background-size: cover;
+                background-position: center;
+                align-self: center;
+                margin-right: 10px; 
+                border: 1px solid #e2e2e2;
+                flex: 0 0 10%;
+                min-width: 70px;
+                height: 50px;
+                box-sizing: border-box;
+            }
+        }
+    }
+
+    .gsc-cursor-box {
+        margin: 10px 10px 10px 0;
+
+        .gsc-cursor-page {
+            color: #006fa6;
+            padding-right: 12px;
+            cursor: pointer;
+            margin-right: 8px;
+            display: inline;
+
+            &:hover {
+                color: #6e6e6e;
+            }
+
+            &.active {
+                color: #6e6e6e;
+                font-size: 18px;
+            }
+        }
+    }
+
+    .gsc-orderby-container {
+        display: none;
+    }
+
+    .gcsc-branding {
+        display: none;
+    }
+
+    .gsib_b {
+        display: none;
+    }
+
+    .gsc-input-box {
+        height: 35px;
+    }
+
+    .gsc-search-box-tools .gsc-search-box .gsc-input {
+        width: 100%;
+    }
+
+    table.gsc-search-box td input.gsc-search-button {
+        display: none;
+    }
+
+    .gs-webResult .gs-bidi-start-align.gs-visibleUrl.gs-visibleUrl-short {
+        display: none;
+    }
+}
+
+.filter {
+	&.inactive {
+		.search-filter-links {
+			.search-filter-link {
+				cursor: default;			
+				color: #6e6e6e;
+			}
+		}
+	}
+
+	.search-filter-links {
+		.search-filter-link {
+			cursor: pointer;
+			line-height: 30px;				
+			color: #006fa6;
+
+			&:hover {
+				color: #6e6e6e;
+			}
+		}
+	}
+}

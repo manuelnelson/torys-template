@@ -1,0 +1,51 @@
+// @TODO change this to generic name
+.wide-radio-list {
+	$height: 38px;
+	
+	width: 100%;
+	display: table;
+	position: relative;
+	
+	.input-item {
+		display: table-cell;
+		text-align: center;
+		height: $height;
+		overflow: hidden;
+		cursor: pointer;
+		position: relative;
+		color: $seconday-hue-darkest;
+		
+		.display-value {
+			display: block;
+			background: $seconday-hue-lightest;
+			margin-left: 2px;
+			line-height: $height;
+			position: relative;
+			z-index: 1;
+		}
+		
+		&:first-child {
+			.display-value {
+				margin-left: 0;
+			}
+		}
+		
+		.active + .display-value,
+		&:hover span,
+		&.active span {
+			background: $seconday-hue-darkest;
+			color: $global-hue-lightest;
+		}
+	}
+	
+	input {
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+	}
+	
+	.input-item {
+		position: relative;
+	}
+}

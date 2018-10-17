@@ -1,0 +1,50 @@
+.search-results-filter {
+	.facet {
+		display: inline-block;
+		margin-right: 10px;
+		color: $seconday-hue-darkest;
+		
+		+ .clear {
+			&:before {
+				display: inline-block;
+				content: '|';
+				padding: 0 10px 0 0;
+			}
+		}
+		
+		i {
+			transform: rotate(45deg);
+			-ms-transform: rotate(45deg); /* IE 9 */
+			-webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+			-moz-transform: rotate(45deg); /* < ff 15 */
+			color: $primary-hue-normal;
+			&:hover{
+				cursor:pointer;
+			}
+		}
+		
+		&:hover {
+			i {
+				color: $seconday-hue-darkest;
+			}
+		}
+	}
+	
+	.clear a {
+		&:before {
+			content: 'Clear';
+		}
+	}
+	
+	.filter-label {
+		padding-right: 10px;
+		
+		&:after {
+			content: ': ';
+		}
+	}
+
+	.accordion-content & {
+		padding-bottom: 10px;
+	}
+}

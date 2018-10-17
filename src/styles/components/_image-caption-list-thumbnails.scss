@@ -1,0 +1,32 @@
+.image-caption-list-thumbnails{
+	padding-top: 20px;
+	
+	.image-item {
+		width: 60px;
+		height: 60px;
+
+		img {
+			max-width: 100%;
+		}
+	}
+}
+.universitorys{
+	.image-caption-list-thumbnails{
+		padding-bottom: 20px;
+	}
+}
+
+.speaker{
+	&:before {
+		content: ', '; 
+	}
+	&:last-child:before {
+		content: ' and '; 
+	}
+	&:first-child:before {
+    content: ''; 
+	}
+}
+
+  
+  

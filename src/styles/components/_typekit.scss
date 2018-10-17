@@ -1,0 +1,13 @@
+.wf-loading {
+	// below hides all elements during FOUC
+	//visibility: hidden;
+	
+	* {
+		// below show's elements minus text during FOUC
+		//font-size: 0px !important;
+	}
+}
+
+.typekit-badge {
+	display: none !important; // @TODO look at legal implications
+}

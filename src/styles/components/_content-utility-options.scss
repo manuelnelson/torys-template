@@ -1,0 +1,40 @@
+.content-utility-options {
+	height: 60px;
+	
+	nav {
+		text-align: right;
+		
+		a {
+			margin-right: 8px;
+		}
+		div{
+			display:inline; 
+		}
+		.share-box { 
+			top:25px; 
+			&.quarterly-landing {
+				left: -27px;
+
+				
+			}
+			div{
+				display:block;
+			}
+		}
+	}
+	&.inline-header{
+		float:right;
+		width:200px;
+	}
+	.addthis_toolbox .at16nc{
+		visibility:hidden;
+		width:0;		
+	}
+	@media #{$global-bp-tablet} { 
+		display: none;
+		
+		nav {
+			text-align: left;
+		}
+	}
+}

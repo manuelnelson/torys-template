@@ -1,0 +1,27 @@
+.description-overlay-wrapper {
+	.description-overlay-teaser {
+		$header-vertical-spacing: 10px;
+		$header-height: 24px;
+		
+		bottom: 0;
+		max-height: ($header-vertical-spacing * 2) + $header-height;
+		transition: all ease-in-out 0.45s;
+
+		.description {
+			padding: $header-vertical-spacing 20px 20px 20px;
+		}
+
+		h3 {
+			margin-bottom: $header-vertical-spacing;
+			max-height: $header-height;
+			overflow: hidden;
+		}
+	}
+	
+	&:hover {
+		.description-overlay-teaser {
+			// @todo make this dynamic
+			max-height: 224px;
+		}
+	}
+}

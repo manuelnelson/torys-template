@@ -1,0 +1,57 @@
+.typeahead-search-result {
+	$item-height: 80px;
+	
+	background: $global-hue-lightest;
+	
+	.typeaheadrow {
+		overflow: hidden;
+		border-top: solid 1px $seconday-hue-lightest;
+		cursor: pointer;
+	}
+	
+	.image {
+		height: $item-height;
+		width: 120px;
+	}
+	
+	.description {
+		padding-left: 20px;
+		line-height: 24px;
+		color: $seconday-hue-darkest;
+	}
+	
+	.description,
+	.location {
+		padding-top: 5px;
+	}
+	
+	.name,
+	.location {
+		color: $primary-hue-normal;
+	}
+	
+	footer {
+		border-top: solid 1px $seconday-hue-lightest;
+		
+		a {
+			line-height: 50px;
+			padding: 0 15px;
+			display: inline-block;
+		}
+	}
+	
+	.location {
+		padding-right: 20px;
+	}
+	
+	&:hover {
+		.typeaheadrow {
+			opacity: 0.6;
+			transition: opacity ease-in-out 0.1s;
+			
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+}

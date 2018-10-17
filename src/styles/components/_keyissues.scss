@@ -1,0 +1,31 @@
+.key-accordion{
+	padding-top: 20px;
+
+	&:first-child {
+		padding-top: 0;
+	}
+
+	h2 {
+		position: relative;
+		padding-bottom: 5px;
+		font-size: 16px;
+	}
+}
+
+.key-accordion-hide-content {
+	.key-accordion-content {
+		display: none;
+	}
+}
+
+.key-accordion-show-content {
+	.key-accordion-content {
+		display: block !important; // always show content, regardless of any setting
+	}
+
+	.fa-plus {
+		&:before {
+			content: "\f068"
+		}	
+	}
+}

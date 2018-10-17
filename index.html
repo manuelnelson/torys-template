@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>torys</title>
+  </head>
+  <body>
+      <div class="global-wrapper" data-mobile-nav-main-wrapper="">
+          <!--stopindex-->
+  <header class="global-header" ng-controller="Header">
+      <div class="print-logo">
+          <img src="/Content/site/public/images/global/torys-logo.png" alt="Torys.com">
+      </div>
+      <div class="wrapper">
+          <a href="/" class="logo pull-left">
+              <img src="/Content/site/public/images/global/torys-logo.png" alt="Torys.com">
+          </a>
+          <a href="" class="menu-trigger pull-right mobile-only" data-mobile-nav-trigger="">
+              <span class="menu-bars">
+                  <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+              </span>
+              <span class="menu-text">MENU</span>
+          </a>
+          <div class="pull-right mobile-exclude">
+              <div class="global-header-top">
+                  <nav class="pull-right">
+                      <ul>
+                          <li class="menu-trigger">
+                              <a href="/about">About</a>						
+                              <div class="menu">
+                                  <nav class="menu-content menu-content-right">
+                                          <a href="/about/our-story">Our Story</a> <br>    
+                                          <a href="/about/community">Community</a> <br>    
+                                          <a href="/about/diversity">Diversity</a> <br>    
+                                          <a href="/about/service-delivery">Service Delivery</a> <br>    
+                                          <a href="/about/women">Women</a> <br>    
+                                          <a href="/about/alumni">Alumni</a> <br>    
+                                          <a href="/about/news">News</a> <br>    
+                                  </nav>
+                              </div>
+                          </li>
+                          <li class="menu-trigger">
+                              <a href="/offices">Offices</a>							
+                              <div class="menu">
+                                  <nav class="menu-content menu-content-right">
+                                          <a href="/offices/toronto">Toronto</a> <br>
+                                          <a href="/offices/new-york">New York</a> <br>
+                                          <a href="/offices/calgary">Calgary</a> <br>
+                                          <a href="/offices/montreal">Montréal</a> <br>
+                                          <a href="/offices/halifax">Halifax</a> <br>
+                                  </nav>
+                              </div>
+                          </li>
+                          <li class="tablet-only tablet-search-trigger active" ng-class="{active: !showTabletSearch}">
+                              <a class="search" ng-click="showTabletSearch = !showTabletSearch">
+                                  <i class="fa fa-search"></i>
+                              </a>
+                          </li>
+                          <li class="tablet-only tablet-search-box" ng-class="{active: showTabletSearch}">
+                              <div class="tablet-search">
+                                  <form action="/search" method="get" class="ng-pristine ng-valid">
+                                      <input type="text" placeholder="Search" value="" ng-blur="showTabletSearch = false" id="q" ng-keypress="search($event)" ng-model="searchVal" name="q">
+                                      <button type="submit"><i class="fa fa-search"></i></button>
+                                  </form>
+                              </div>
+                          </li>
+                      </ul>
+                  </nav>
+              </div>
+              <div class="global-header-bottom">
+                  <nav class="primary-nav pull-left">
+                      <ul>                    
+                          <li class="primary-link active">                            
+                              <a href="/people" ng-click="tabletOpen($event)">People</a>
+                              <div class="mega-menu mega-menu-people">
+                                  <div class="block-glyph"></div>
+                                  <div class="mega-menu-content">
+                                      <a class="close-menu" ng-click="tabletClose($event)">X</a>
+                                      <div class="global-people-search" ng-controller="GlobalPeopleSearch" ng-cloak="">
+  <div class="alphabetic-filter">
+      <span ng-repeat="(letter, visibility) in letters track by letter">
+          <a ng-class="{active: visibility === true}" ng-show="visibility === true" class="letter" href="/people/search/?letter={{letter}}">{{letter}}
+          </a>
+          <a ng-class="{active: visibility === true}" ng-show="visibility === false" class="letter" href="javascript:void(0)">{{letter}}
+          </a>
+      </span>
+      <p class="advanced-search"><a href="/people">Advanced Search</a></p>
+  </div>
+  <div class="text-search section-search">
+      <input type="text" ng-model="searchQuery" ng-enter="search()" placeholder="Search Our People" ng-trim="false" class="ng-pristine ng-valid">
+      <button type="submit" ng-click="search()" class=""><i class="fa fa-search"></i></button>
+  </div>
+  
+<div class="global-people-search-results" ng-show="searchQuery.length > 0">
+      <div ng-repeat="person in filteredPeople = (people | professionals:searchQuery | orderBy: ['lastName', 'firstName']) | limitTo: 3" ng-click="goto(person.href)" class="person">
+          <div class="pull-left image">
+              <img ng-src="{{person.imagePath}}" alt="">
+          </div>
+          <div class="pull-left description">
+              <div class="name">{{person.name}}</div>
+              <div class="title">{{person.title}}</div>
+          </div>
+          <div class="pull-right location">
+              {{person.location}}
+          </div>
+      </div>
+      <footer class="results-utility" ng-show="filteredPeople.length > 3">
+          <a href="/people/search/?keyword={{searchQuery}}" class="show-more">View All Results</a>
+      </footer>
+  </div>
+  <div class="global-people-search-no-results" ng-show="filteredPeople.length === 0">
+      <i class="fa fa-exclamation-triangle"></i>No results were found.
+  </div>
+</div>
+                        
+                                  </div>
+                              </div>
+                          </li>
+                          <li class="primary-link ">
+                              <a href="/expertise" ng-click="tabletOpen($event)">Expertise</a>							
+                              <div class="mega-menu mega-menu-expertise">
+                                  <div class="block-glyph"></div>
+                                  <div class="mega-menu-content">
+                                      <a class="close-menu" ng-click="tabletClose($event)">X</a>
+<div class="global-expertise-nav" ng-controller="ServicesSearch" ng-cloak="">
+  
+  <div class="page-sections pull-container">
+      <div class="pull-left">
+          <h3>Services</h3>
+          <nav>
+              <ul>
+                       <li>
+                           <a href="/expertise/services/aboriginal">Aboriginal</a>
+                       </li>
+                       <li>
+                           <a href="/expertise/services/banking-and-debt-finance">Banking and Debt Finance</a>
+                       </li>
+                       <li>
+                           <a href="/expertise/services/board-advisory-and-governance">Board Advisory and Governance</a>
+                       </li>
+                       <li>
+                           <a href="/expertise/services/capital-markets">Capital Markets</a>
+                       </li>
+                       <li>
+                           <a href="/expertise/services/competition-and-foreign-investment-review">Competition and Foreign Investment Review</a>
+                       </li>
+                       <li>
+                           <a href="/expertise/services/corporate-restructuring-and-advisory">Corporate Restructuring and Advisory</a>
+                       </li>
+                       <li>
+                           <a href="/expertise/services/environmental">Environmental</a>
+                       </li>
+                       <li>
+                           <a href="/expertise/services/intellectual-property">Intellectual Property</a>
+                       </li>
+                       <li>
+                           <a href="/expertise/services/litigation-and-dispute-resolution">Litigation and Dispute Resolution</a>
+                       </li>
+                       <li>
+                           <a href="/expertise/services/mergers-and-acquisitions">Mergers and Acquisitions</a>
+                       </li>
+                       <li>
+                           <a href="/expertise/services/pensions-and-employment">Pensions and Employment</a>
+                       </li>
+                       <li>
+                           <a href="/expertise/services/private-client-services">Private Client Services</a>
+                       </li>
+                       <li>
+                           <a href="/expertise/services/private-equity">Private Equity</a>
+                       </li>
+                       <li>
+                           <a href="/expertise/services/projects">Projects</a>
+                       </li>
+                       <li>
+                           <a href="/expertise/services/regulatory">Regulatory</a>
+                       </li>
+                       <li>
+                           <a href="/expertise/services/tax">Tax</a>
+                       </li>
+                       <li>
+                           <a href="/expertise/services/technology-contracting">Technology Contracting</a>
+                       </li>
+              </ul>
+          </nav>
+      </div>
+      <div class="pull-left">
+          <h3>Industries</h3>
+          <nav>
+              <ul>
+                    <li>
+                          <a href="/expertise/industries/agribusiness">Agribusiness</a>
+                      </li>
+                    <li>
+                          <a href="/expertise/industries/energy">Energy</a>
+                      </li>
+                    <li>
+                          <a href="/expertise/industries/financial-services">Financial Services</a>
+                      </li>
+                    <li>
+                          <a href="/expertise/industries/government">Government</a>
+                      </li>
+                    <li>
+                          <a href="/expertise/industries/industrial-and-manufacturing">Industrial and Manufacturing</a>
+                      </li>
+                    <li>
+                          <a href="/expertise/industries/infrastructure">Infrastructure</a>
+                      </li>
+                    <li>
+                          <a href="/expertise/industries/life-sciences">Life Sciences</a>
+                      </li>
+                    <li>
+                          <a href="/expertise/industries/media-and-communications">Media and Communications</a>
+                      </li>
+                    <li>
+                          <a href="/expertise/industries/mining-and-metals">Mining and Metals</a>
+                      </li>
+                    <li>
+                          <a href="/expertise/industries/real-estate">Real Estate</a>
+                      </li>
+                    <li>
+                          <a href="/expertise/industries/retail-and-consumer-products">Retail and Consumer Products</a>
+                      </li>
+                    <li>
+                          <a href="/expertise/industries/technology">Technology</a>
+                      </li>
+              </ul>
+          </nav>
+      </div>
+      <div class="pull-left">
+          <h3 class="region-label">Regions </h3>
+          <nav>
+              <ul>
+                    <li>
+                          <a href="/expertise/regions/torys-global"> Torys Global</a>
+                      </li>
+                    <li>
+                          <a href="/expertise/regions/apac">Asia Pacific</a>
+                      </li>
+                    <li>
+                          <a href="/expertise/regions/canada-and-the-united-states">Canada and the United States</a>
+                      </li>
+                    <li>
+                          <a href="/expertise/regions/europe-and-the-united-kingdom">Europe and the United Kingdom</a>
+                      </li>
+                    <li>
+                          <a href="/expertise/regions/latin-america">Latin America</a>
+                      </li>
+                    <li>
+                          <a href="/expertise/regions/middle-east-and-africa">Middle East and Africa</a>
+                      </li>
+              </ul>
+          </nav>
+          <div class="nav-callouts">
+              <a class="btn" href="/work">Explore Our Work</a>
+
+              
+          </div>
+          
+
+
+      </div>
+  </div>
+</div>
+
+                                  </div>
+                              </div>
+                          </li>
+                          <li class="primary-link ">
+                              <a href="/insights" ng-click="tabletOpen($event)">Insights</a>
+                              <div class="mega-menu mega-menu-insights">
+                                  <div class="block-glyph"></div>
+                                  <div class="mega-menu-content">
+                                      <a class="close-menu" ng-click="tabletClose($event)">X</a>
+  <div class="global-expertise-nav" ng-controller="InsightSearch" ng-cloak="">
+      <div class="section-search">
+          <input type="text" ng-model="searchQuery" placeholder="Search This Section" ng-enter="search()">
+          <button type="submit" ng-click="search()"><i class="fa fa-search"></i></button>
+
+      </div>
+
+      <div class="page-sections pull-container">
+          <div class="pull-left">
+              <div class="nav-callouts">
+                          <a class="btn" href="/insights/torys-quarterly/q1_2018">Torys Quarterly </a>
+                          <a class="btn" href="/insights/publications">Publications </a>
+                          <a class="btn" href="/insights/events">Events </a>
+                          <a class="btn" href="/insights/universitorys">UniversiTorys </a>
+                                          <a class="btn" href="/insights/subscribe">Subscribe</a>    
+              </div>
+          </div>
+          <div class="pull-left">
+              <h3>Trends</h3>
+              <nav>
+                  <ul>
+                          <li><a href="/insights/topics/transaction-tips">Transaction Tips</a></li>    
+                          <li><a href="/insights/topics/ipos-going-public-in-canada">IPOs: Going Public in Canada</a></li>    
+                          <li><a href="/insights/topics/technology-trends">Technology Trends</a></li>    
+                          <li><a href="/insights/topics/emerging-trends-in-the-cannabis-industry">Emerging Trends in the Cannabis Industry</a></li>    
+                          <li><a href="/insights/topics/trends-in-ma">Trends in M&amp;A</a></li>    
+                          <li><a href="/insights/topics/shareholder-activism">Shareholder Activism</a></li>    
+                          <li><a href="/insights/topics/business-law-guides">Business Law Guides</a></li>    
+                  </ul>
+              </nav>
+          </div>
+      </div>
+  </div>
+
+                                  </div>
+                              </div>
+                          </li>
+                          <li class="primary-link ">
+                              <a href="/careers" ng-click="tabletOpen($event)">Careers</a>
+                              <div class="mega-menu mega-menu-careers">
+                                  <div class="block-glyph"></div>
+                                  <div class="mega-menu-content">
+                                      <a class="close-menu" ng-click="tabletClose($event)">X</a>
+<div class="global-expertise-nav">
+      <h3><a href="/careers/careers-at-torys/overview">Careers at Torys</a></h3>
+    <div class="page-sections pull-container">
+      <div class="pull-left">
+        <nav>
+            <ul>
+                              <li><a href="/careers/careers-at-torys/overview">Overview</a></li>
+            </ul>
+        </nav>
+      </div>
+      <div class="pull-left">
+        <nav>
+          <ul>
+                              <li><a href="/careers/careers-at-torys/current-opportunities">Current Opportunities</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>	    
+        <div class="page-sections pull-container">
+      <div class="pull-left">
+        <div class="nav-callouts">
+                <a class="btn" href="/careers/students/toronto-student-program/overview">Toronto Student Program</a>			                
+                <a class="btn" href="/careers/students/calgary-student-progam/overview">Calgary Student Program</a>			                
+                <a class="btn" href="/careers/legal-professionals/lawyers/overview">Lawyers</a>			                
+        </div>
+      </div>
+      <div class="pull-left">
+        <div class="nav-callouts">
+                <a class="btn" href="/careers/legal-professionals/law-clerks-and-paralegals/overview">Law Clerks and Paralegals</a>			                
+                <a class="btn" href="/careers/staff/firm-administration/overview">Firm Administration</a>			                
+                <a class="btn" href="/careers/staff/legal-secreterial-support/overview">Legal Secretarial Support</a>			                
+        </div>
+      </div>
+    </div>        
+</div>    
+
+                                  </div>
+                              </div>
+                          </li>
+                      </ul>
+                  </nav>
+                  <div class="header-search pull-left">
+                      <form class="ng-pristine ng-valid">
+                          <input placeholder="Search" ng-enter="search()" ng-model="searchVal" type="text"><button type="submit" ng-click="search()" class=""><i class="fa fa-search"></i></button>
+                      </form>
+                  </div>
+
+              </div>
+              <a href="" class="mobile-nav-trigger"></a>
+          </div>
+      </div>
+  </header>    
+
+          <!--startindex-->
+          <section class="wrapper content-block">
+  <div class="search-results" ng-controller="SearchResults" data-url="/professionals/search" data-sanitize-field="office1,office2" data-is-infinite="true" data-page-size="20" ng-cloak="">    
+      <div class="search-tools wrapper">
+          <div class="search-header">
+                    <p>{{count}} Results | <span class="link" ng-click="toggleSearch()">Refine your search <i class="fa fa-filter"></i></span></p>
+                </div>
+          <div ng-show="showSearch" class="people-search">
+<form class="global-people-search" name="form" ng-controller="GlobalPeopleSearch" ng-cloak="" novalidate="">
+  <div class="alphabetic-filter">
+  <a ng-repeat="(letter, visibility) in letters track by letter" ng-class="{active: visibility === true}" class="letter" ng-click="addLetter(letter, visibility)" href="">
+    {{letter}}
+  </a>
+</div>
+  <div class="section-search text-search">
+      <input type="text" ng-model="searchQuery" ng-enter="search()" placeholder="Search Our People" ng-trim="false">
+      <button type="submit" ng-click="search()"><i class="fa fa-search"></i></button>
+  </div>
+<div class="global-people-search-results" ng-show="searchQuery.length > 0">		
+  <div ng-repeat="person in filteredPeople = (people | professionals:searchQuery | orderBy: ['lastName', 'firstName']) | limitTo: 4" ng-click="goto(person.href)" class="person">			
+    <div class="pull-left description">
+      <div class="name">{{person.name}}</div>
+    </div>			
+  </div>		
+  <footer class="results-utility" ng-show="filteredPeople.length > 3">			
+    <a href="/people/search/?keyword={{searchQuery}}" class="show-more">View All Results</a>
+  </footer>
+</div>
+<div class="global-people-search-no-results" ng-show="filteredPeople.length === 0 &amp;&amp; dirty &amp;&amp; initialized">
+  <i class="fa fa-exclamation-triangle"></i> No results were found.
+</div>		
+  <div class="input-line-item">
+      <div data-drop-down="" class="ui-dropdown" model="service">            
+          <select name="sc-select-value">
+              <option value="Service">Service</option>
+                  <option value="24012203-0365-4f9b-8534-cda252732cca">Aboriginal</option>    
+                  <option value="58a039f7-d2bb-42ca-b0c6-ed3aa25a7eab">Banking and Debt Finance</option>    
+                  <option value="ee2a9bda-1fc2-466d-abcb-2dc8350a3b3b">Board Advisory and Governance</option>    
+                  <option value="1dee8ae3-3329-43a4-b69d-7405142cb8e6">Capital Markets</option>    
+                  <option value="73faf695-6851-45ec-9286-babc5ec4b9f9">Competition and Foreign Investment Review</option>    
+                  <option value="56a30bfe-df32-4010-9354-b039f0da0758">Corporate Restructuring and Advisory</option>    
+                  <option value="d43e4b60-d563-4922-a1b3-d65c8e277759">Environmental</option>    
+                  <option value="78548bb0-b536-4e38-a904-5e158575477b">Intellectual Property</option>    
+                  <option value="14ad6567-babd-4402-be1e-08a7d7a94748">Litigation and Dispute Resolution</option>    
+                  <option value="d31facdc-f413-47a7-8eeb-cbd99636205a">Mergers and Acquisitions</option>    
+                  <option value="74ae709a-9198-47b3-b388-8d1b4149b5d2">Pensions and Employment</option>    
+                  <option value="2f26cc2e-c125-4c00-bb92-a174a707afe8">Private Client Services</option>    
+                  <option value="574f18f9-6a9b-4c96-a9d3-7876a75fb9a0">Private Equity</option>    
+                  <option value="1ba767f6-66a5-4a82-aa60-74eebba41c66">Projects</option>    
+                  <option value="efd81015-19dc-444b-a9f6-0e0761c7fc6e">Tax</option>    
+                  <option value="7cf33a3e-752f-422a-ab59-520ee4dbeaae">Technology Contracting</option>    
+          </select>            
+      </div>
+  </div>
+  <div class="input-line-item">
+      <div data-drop-down="" class="ui-dropdown" model="industry">            
+          <select name="sc-select-value">
+              <option value="Industry">Industry</option>
+                  <option value="05d60dae-1f00-483d-aa51-3b75e32165fb">Agribusiness</option>    
+                  <option value="147d8a59-1ae7-4758-8786-d178e95ec3e7">Energy</option>    
+                  <option value="aa9ba062-6026-421d-94f6-7c555a0fb925">Financial Services</option>    
+                  <option value="057705f7-6e70-4fad-9378-2d2edcf5c487">Government</option>    
+                  <option value="a1289ef6-a90e-4014-8337-a69a54c2e7bd">Industrial and Manufacturing</option>    
+                  <option value="92cd972e-a7a9-4006-82c7-0fbcba3c6937">Infrastructure</option>    
+                  <option value="972f560c-e326-4463-b888-abed658b2643">Life Sciences</option>    
+                  <option value="6c94c519-961e-45f2-bdea-a53ad79d7474">Media and Communications</option>    
+                  <option value="fb08f1d6-6f6e-4099-b0d7-b775ea2e16d0">Mining and Metals</option>    
+                  <option value="81bcf66a-2fe7-4ff9-a6bc-8567917af007">Real Estate</option>    
+                  <option value="fab0315a-03ce-4961-8c3a-42dd69156fdf">Retail and Consumer Products</option>    
+                  <option value="e791bc79-96e8-44e0-8fa0-d11742001e62">Technology</option>    
+          </select>
+      </div>
+  </div>
+  <div class="input-line-item last">
+      <div data-drop-down="" class="ui-dropdown" model="office">            
+          <select name="sc-select-value">
+              <option value="Service">Office</option>
+                  <option value="ad662122-557a-49b1-b174-95aeb3a0a9f0">Calgary</option>    
+                  <option value="bcbea0ea-252c-4116-9420-8119bd96c851">Halifax</option>    
+                  <option value="18fc28a1-fd09-48d6-b493-f9f759bbdefd">Montréal</option>    
+                  <option value="516eacef-4e4d-4dbe-8004-c83bbbb3149f">New York</option>    
+                  <option value="e3f81acf-9f5c-4a58-899d-7b2234186e9c">Toronto</option>    
+          </select>
+      </div>
+  </div>
+  <div class="input-line-item">
+      <div data-drop-down="" class="ui-dropdown" model="position">            
+          <select name="sc-select-value">
+              <option value="Position">Position</option>
+                  <option value="3009b7ad-a638-45df-a3d9-4159e53ac079">Associate</option>    
+                  <option value="fe7b436d-ed84-4bf4-860f-0c2fa7d0d879">Chair</option>    
+                  <option value="c8fe51d3-5f40-4121-b7fe-4fabb1be37a5">Counsel</option>    
+                  <option value="9a0e11ce-6532-4fb0-a82c-c7327ace7066">Law Clerk</option>    
+                  <option value="5e0d1b90-ab91-48d4-be00-33388811e0e2">Other Professionals</option>    
+                  <option value="5894eefb-25d1-4615-9618-3218829024ec">Paralegal</option>    
+                  <option value="6bb5f77f-cbd6-4243-bf4e-7a83fa89827d">Paralegal and Managing Clerk</option>    
+                  <option value="e380c9e2-7249-47d5-a3ff-6d5c785fd6aa">Partner</option>    
+                  <option value="4aa99caa-17a7-474d-814d-c34348940b93">Patent Agent</option>    
+                  <option value="bf43fa7d-2a46-4836-873e-b52b164f8416">Senior Associate</option>    
+                  <option value="6677746c-9e66-454e-8ad0-a83502f6b75d">Senior Counsel</option>    
+          </select>
+      </div>
+  </div>
+  <div class="input-line-item">
+      <input type="text" id="people-year" ng-model="yearCall" name="yearCall" ng-class="{inputError:yearError}" placeholder="Year of Call (YYYY)">	    
+      <label ng-show="yearError" class="inputError">Date must be in YYYY format and between years 1900-2025</label>
+  </div>
+  <div class="input-line-item last">
+      <div data-drop-down="" class="ui-dropdown" model="school">            
+          <select name="sc-select-value">
+              <option value="Service">Law School</option>
+                      <option value="2b40a848-f695-41c6-b784-facbb8f39932">American University</option> 
+                      <option value="40f923b7-b89a-41a3-9359-cbf29d3e70d0">Cambridge University</option> 
+                      <option value="59fb8c0e-3401-4d3f-a044-27189440b25f">Canadian Institute of Chartered Accountants</option> 
+                      <option value="f0af1a09-581a-4990-9e96-d20d8fe7c2f8">College of Law of England and Wales</option> 
+                      <option value="f2cf4004-e8e7-439c-a2f2-74a9776c7aae">Columbia University</option> 
+                      <option value="12b67f37-893b-4c5e-a8ec-bc3bd39a2e94">Cornell University</option> 
+                      <option value="189f0d75-06fe-40c3-8f4e-ca9122f8552c">Dalhousie University</option> 
+                      <option value="ce43ec24-c487-4e33-ae09-5117f0f76366">Fordham University</option> 
+                      <option value="bed8814d-c0e5-4d6c-976c-50164a684135">George Washington University</option> 
+                      <option value="3d6bb8aa-e433-4120-83a2-9160bb200b66">Georgetown University</option> 
+                      <option value="b9a7fe74-1f79-432b-ad5c-ba0333e40a71">Harvard University</option> 
+                      <option value="6cdb68d6-5129-43e8-baf3-837f20a4d509">Hebrew University of Jerusalem</option> 
+                      <option value="c95b0e39-9f59-4683-82f2-37a48e879b9e">Ivey Business School</option> 
+                      <option value="69e2f336-0fe9-4e9e-8122-c74712d150c6">Kazakhstan Law University</option> 
+                      <option value="20022bb8-a9ec-485e-a76e-5733847e9f9c">McGill University</option> 
+                      <option value="e77d4181-3bbb-403a-9969-7b441b5fb3dc">New York University</option> 
+                      <option value="48e38733-4ed8-462b-8657-f679460aeded">Osgoode Hall Law School</option> 
+                      <option value="85afe8da-24cb-4fc5-8a7f-1aab1e391f3f">Oxford University</option> 
+                      <option value="616c9efb-d2aa-402c-a4d3-34235106e302">Pepperdine University</option> 
+                      <option value="78d0add9-4e78-4477-b1c6-901e6eaa061b">Queen's University</option> 
+                      <option value="7c0fae66-448d-4025-805b-a14916ccc4e0">Seton Hall University</option> 
+                      <option value="7dc08e89-379e-4766-85b3-03ff9f022fda">Sheridan College</option> 
+                      <option value="caa3e018-d3e2-42eb-9841-8f9cf1b4d6a3">Stanford University</option> 
+                      <option value="6631d2e5-161c-4abc-8e31-9409c8266b46">Stockholm University</option> 
+                      <option value="d2a67e81-42ef-461f-a50e-6b6e3a07094c">Temple University</option> 
+                      <option value="31492029-2804-4c19-bc8e-e7d0d4bbe528">Université de Montréal</option> 
+                      <option value="73845864-398e-4f13-be90-1d4abaccc35c">University of Alberta</option> 
+                      <option value="4303b414-0223-4abb-b7d4-49a649fa23bb">University of British Columbia</option> 
+                      <option value="e6e78e0a-bbc8-4b3b-9433-20419a95b07f">University of Calgary</option> 
+                      <option value="f4be175c-dd9d-4e38-badf-19fe30310fd8">University of California, Berkeley</option> 
+                      <option value="8f5fc799-4e5c-4d0e-b058-cee6f039576b">University of Chicago</option> 
+                      <option value="f1399f0f-4795-4f5a-8d48-0b0b1e66fd4e">University of Manitoba</option> 
+                      <option value="b82082b1-1bc1-4e98-a406-f1866d3ecc6d">University of Montana</option> 
+                      <option value="3ba84685-f79f-4024-bc3c-3a897837235f">University of New Brunswick</option> 
+                      <option value="ce6a976a-c014-4cce-a7a8-a41725ca8684">University of Ottawa</option> 
+                      <option value="3244a425-1b4b-405e-a2f9-043fe6634bc0">University of Pennsylvania</option> 
+                      <option value="06fd2ad5-6c11-40e8-8938-394866416c37">University of Saskatchewan</option> 
+                      <option value="5e5ec723-ecc5-4349-aa5b-ed90d5d46ab7">University of Toronto</option> 
+                      <option value="47482dc1-3337-497a-9981-c05abd86b5b2">University of Victoria</option> 
+                      <option value="738d0885-49ba-457c-84e6-f6e3520ded75">University of Virginia</option> 
+                      <option value="d639e030-af9b-46b9-a931-fb966c759ca3">University of Western Ontario</option> 
+                      <option value="8325a205-442f-4907-a7ff-7788d0a04dee">University of Western Ontario Faculty of Law and Richard Ivey School of Business</option> 
+                      <option value="c689a7f6-03e5-4859-baa4-0a56e2358356">University of Windsor</option> 
+                      <option value="e85985b6-019b-42c7-be86-da764f664f9e">University of Windsor, Faculty of Law</option> 
+                      <option value="bf94a6ba-fb99-46c6-9bd7-ebfeaf132497">Yale University</option> 
+          </select>
+      </div>
+  </div>
+  <div class="input-line-item">&nbsp;
+  </div>
+  <div class="input-line-item">&nbsp;
+  </div>
+  <div class="input-line-item last">
+      <button type="submit" ng-click="search()" class="btn text-center">Submit</button>
+  </div>
+</form>    
+      
+          </div>
+      </div>
+<div class="search-results-filter" ng-show="filters.length > 0">
+<span class="colon">Results for</span>
+  <div class="facet" ng-repeat="filter in filters">
+      {{filter.text}} <i ng-hide="false" ng-click="removeFilter(filter)" class="fa fa-plus-circle"></i>
+  </div>
+<span class="clear" ng-hide="false" ng-click="clearFilters()"><a href=""></a></span>
+</div>
+      <div id="results" class="people-search-results" infinite-scroll="nextPage()" infinite-scroll-immediate-check="false" infinite-scroll-disabled="scrollDisabled()" b="">
+          <div class="person" ng-repeat="person in list">
+              <div class="pull-left image">
+                  <img ng-src="{{person.imagePath}}" ng-show="{{person.imagePath.length > 0}}" alt="{{person.name}}" ng-click="goto(person.href)">
+              </div>
+              <div class="pull-left description">
+                  <div class="name"><a href="{{person.href}}">{{person.name}}</a></div>
+                  <div class="title">{{person.title}}</div>
+                  <div class="email"><a href="mailto:{{person.email}}">{{person.email}}</a></div>
+              </div>
+              <div class="pull-right location">
+                  <div class="office1" ng-bind-html="person.office1"></div>
+                  <div class="office2" ng-bind-html="person.office2"></div>
+              </div>
+          </div>
+      </div>
+      <span class="infinite-scroll" ng-show="isLoading">
+          <i class="fa fa-spinner fa-spin"></i> Loading more
+      </span>
+   </div>
+</section>
+
+    
+<div id="app"></div>
+<!-- built files will be auto injected -->
+
+          <!--stopindex-->
+<footer class="global-footer wrapper">
+  <div class="global-footer-top">
+      <div class="primary">
+          <nav>
+              <h3>
+                  <a href="/people">People</a>
+              </h3>
+          </nav>
+          <nav>
+              <h3>
+                  <a href="/expertise">Expertise</a>
+              </h3>
+
+              <ul class="sub-links">
+                  <li><a href="/work">Our Work</a></li>
+                  <li><a href="/expertise">Service &amp; Industries</a></li>
+              </ul>
+          </nav>
+
+          <nav>
+              <h3>
+                  <a href="/insights">Insights</a>
+              </h3>
+
+              <ul class="sub-links">
+                  <li><a href="/insights/events">Events</a></li>
+                  <li><a href="/insights/publications">Publications</a></li>
+              </ul>
+          </nav>
+
+          <nav>
+              <h3>
+                  <a href="/careers">Careers</a>
+              </h3>
+                  <ul class="sub-links">
+                              <li><a href="/careers/careers-at-torys/overview">Careers at Torys</a></li>
+                              <li><a href="/careers/students/toronto-student-program/overview">Student Program</a></li>
+                              <li><a href="/careers/legal-professionals/lawyers/overview">Legal Professionals</a></li>
+                              <li><a href="/careers/staff/firm-administration/overview">Staff</a></li>
+                  </ul>
+          </nav>
+
+      </div>
+
+      <div class="secondary">
+          <nav>
+              <h3>
+                  <a href="/about">About </a>
+              </h3>
+                  <ul class="sub-links">
+                          <li><a href="/about/our-story">Our Story</a></li>
+                          <li><a href="/about/community">Community</a></li>
+                          <li><a href="/about/diversity">Diversity</a></li>
+                          <li><a href="/about/service-delivery">Service Delivery</a></li>
+                          <li><a href="/about/women">Women</a></li>
+                          <li><a href="/about/alumni">Alumni</a></li>
+                          <li><a href="/about/news">News</a></li>
+                  </ul>
+          </nav>
+
+          <nav>
+              <h3>
+                  <a href="/offices">Offices</a>
+              </h3>
+
+              <ul class="sub-links">
+                <li><a href="/offices/toronto">Toronto</a></li>
+                <li><a href="/offices/new-york">New York</a></li>
+                <li><a href="/offices/calgary">Calgary</a></li>
+                <li><a href="/offices/montreal">Montréal</a></li>
+                <li><a href="/offices/halifax">Halifax</a></li>
+              </ul>
+          </nav>
+      </div>
+    <div class="social-media">
+          <ul>
+              <li>
+                      <div class="tile tile-social">
+                          <div class="tile-content">
+                              <a href="https://www.facebook.com/TorysLLP">
+                                  <img src="/~/media/images/social/facebook36x36px.jpg" alt="Facebook"></a>
+                          </div>
+                      </div>
+                  </li>
+              <li>
+                      <div class="tile tile-social">
+                          <div class="tile-content">
+                              <a href="http://twitter.com/torysllp">
+                                  <img src="/~/media/images/social/twitter36x36px.jpg" alt=""></a>
+                          </div>
+                      </div>
+                  </li>
+              <li>
+                      <div class="tile tile-social">
+                          <div class="tile-content">
+                              <a href="https://ca.linkedin.com/company/torys-llp">
+                                  <img src="/~/media/images/social/linkedin36x36px.jpg" alt="LinkedIn"></a>
+                          </div>
+                      </div>
+                  </li>
+              <li>
+                      <div class="tile tile-social">
+                          <div class="tile-content">
+                              <a href="/pages/email-subscription">
+                                  <img src="/~/media/images/social/email36x36.jpg" alt=""></a>
+                          </div>
+                      </div>
+                  </li>
+          </ul>
+      </div>
+
+  </div>
+  <div class="global-footer-bottom">
+      <nav class="utility-nav">
+          <a href="/footer/privacy">Privacy Policy</a>
+          <a href="/footer/accessibility">Accessibility</a>
+          <a href="/footer/copyright">Copyright</a>
+          <a href="/footer/disclaimer">Disclaimer</a>
+      </nav>
+      <div class="legal-copy">
+          © 2018 Torys LLP. All rights reserved.
+      </div>
+  </div>
+</footer>
+
+          <!--startindex-->
+      </div>
+      <!--stopindex-->
+  <div class="mobile-nav-wrapper">
+      <div data-mobile-scroller="">
+          <div class="mobile-nav">
+              <div class="utility-wrapper">
+                  <a ng-click="traverseBackward()" class="back-btn"><i class="fa fa-angle-left"></i>Back</a>
+                  <div class="text-search">
+                      <input type="text" placeholder="Search" ng-enter="search()" ng-model="searchVal" name="searchVal">
+                      <button type="submit" ng-click="search()"><i class="fa fa-search"></i></button>
+                  </div>
+              </div>
+              <nav data-nav-tree="">
+                  <ul>
+                      <li>
+                          <a href="/people" class="uppercase">People</a>
+                      </li>
+                      <li>
+                          <a class="uppercase" href="/expertise">Expertise</a>
+                          <ul>
+                              <li><a href="">Services</a>
+                                  <ul>
+                                          <li><a href="/expertise/services/aboriginal">Aboriginal</a></li>
+                                          <li><a href="/expertise/services/banking-and-debt-finance">Banking and Debt Finance</a></li>
+                                          <li><a href="/expertise/services/board-advisory-and-governance">Board Advisory and Governance</a></li>
+                                          <li><a href="/expertise/services/capital-markets">Capital Markets</a></li>
+                                          <li><a href="/expertise/services/competition-and-foreign-investment-review">Competition and Foreign Investment Review</a></li>
+                                          <li><a href="/expertise/services/corporate-restructuring-and-advisory">Corporate Restructuring and Advisory</a></li>
+                                          <li><a href="/expertise/services/environmental">Environmental</a></li>
+                                          <li><a href="/expertise/services/intellectual-property">Intellectual Property</a></li>
+                                          <li><a href="/expertise/services/litigation-and-dispute-resolution">Litigation and Dispute Resolution</a></li>
+                                          <li><a href="/expertise/services/mergers-and-acquisitions">Mergers and Acquisitions</a></li>
+                                          <li><a href="/expertise/services/pensions-and-employment">Pensions and Employment</a></li>
+                                          <li><a href="/expertise/services/private-client-services">Private Client Services</a></li>
+                                          <li><a href="/expertise/services/private-equity">Private Equity</a></li>
+                                          <li><a href="/expertise/services/projects">Projects</a></li>
+                                          <li><a href="/expertise/services/regulatory">Regulatory</a></li>
+                                          <li><a href="/expertise/services/tax">Tax</a></li>
+                                          <li><a href="/expertise/services/technology-contracting">Technology Contracting</a></li>
+                                  </ul>
+                              </li>
+                              <li><a href="">Industries</a>
+                                  <ul>
+                                          <li><a href="/expertise/industries/agribusiness">Agribusiness</a></li>
+                                          <li><a href="/expertise/industries/energy">Energy</a></li>
+                                          <li><a href="/expertise/industries/financial-services">Financial Services</a></li>
+                                          <li><a href="/expertise/industries/government">Government</a></li>
+                                          <li><a href="/expertise/industries/industrial-and-manufacturing">Industrial and Manufacturing</a></li>
+                                          <li><a href="/expertise/industries/infrastructure">Infrastructure</a></li>
+                                          <li><a href="/expertise/industries/life-sciences">Life Sciences</a></li>
+                                          <li><a href="/expertise/industries/media-and-communications">Media and Communications</a></li>
+                                          <li><a href="/expertise/industries/mining-and-metals">Mining and Metals</a></li>
+                                          <li><a href="/expertise/industries/real-estate">Real Estate</a></li>
+                                          <li><a href="/expertise/industries/retail-and-consumer-products">Retail and Consumer Products</a></li>
+                                          <li><a href="/expertise/industries/technology">Technology</a></li>
+                                  </ul>
+                              </li>
+                              <li><a href="">Regions</a>
+                                  <ul>
+                                          <li><a href="/expertise/regions/torys-global"> Torys Global</a></li>
+                                          <li><a href="/expertise/regions/apac">Asia Pacific</a></li>
+                                          <li><a href="/expertise/regions/canada-and-the-united-states">Canada and the United States</a></li>
+                                          <li><a href="/expertise/regions/europe-and-the-united-kingdom">Europe and the United Kingdom</a></li>
+                                          <li><a href="/expertise/regions/latin-america">Latin America</a></li>
+                                          <li><a href="/expertise/regions/middle-east-and-africa">Middle East and Africa</a></li>
+                                  </ul>
+                              </li>
+                              <li><a href="/work">Explore Our Work</a></li>
+                          </ul>
+                      </li>
+                      <li>
+                          <a class="uppercase" href="/insights">Insights</a>
+                          <ul>
+                                  <li><a href="/insights/torys-quarterly/q1_2018">Torys Quarterly</a></li>
+                                  <li><a href="/insights/publications">Publications</a></li>
+                                  <li><a href="/insights/events">Events</a></li>
+                                  <li><a href="/insights/universitorys">UniversiTorys</a></li>
+                                                                  <li><a href="/insights/subscribe">Subscribe</a></li>
+                                                                  <li><a href="">Trends</a>
+                                      <ul>
+                                              <li><a href="/insights/topics/transaction-tips">Transaction Tips</a></li>
+                                              <li><a href="/insights/topics/ipos-going-public-in-canada">IPOs: Going Public in Canada</a></li>
+                                              <li><a href="/insights/topics/technology-trends">Technology Trends</a></li>
+                                              <li><a href="/insights/topics/emerging-trends-in-the-cannabis-industry">Emerging Trends in the Cannabis Industry</a></li>
+                                              <li><a href="/insights/topics/trends-in-ma">Trends in M&amp;A</a></li>
+                                              <li><a href="/insights/topics/shareholder-activism">Shareholder Activism</a></li>
+                                              <li><a href="/insights/topics/business-law-guides">Business Law Guides</a></li>
+                                      </ul>
+                                  </li>
+              
+                          </ul>
+                      </li>
+                      <li>
+                          <a class="uppercase" href="/careers">Careers</a>
+                              <ul>
+                                          <li><a href="/careers/careers-at-torys/overview">Overview</a></li>
+                                          <li><a href="/careers/careers-at-torys/current-opportunities">Current Opportunities</a></li>
+                                                                          <li><a href="/careers/students/toronto-student-program/overview">Toronto Student Program</a></li>
+                                      <li><a href="/careers/students/calgary-student-progam/overview">Calgary Student Program</a></li>
+                                      <li><a href="/careers/legal-professionals/lawyers/overview">Lawyers</a></li>
+                                      <li><a href="/careers/legal-professionals/law-clerks-and-paralegals/overview">Law Clerks and Paralegals</a></li>
+                                      <li><a href="/careers/staff/firm-administration/overview">Firm Administration</a></li>
+                                      <li><a href="/careers/staff/legal-secreterial-support/overview">Legal Secretarial Support</a></li>
+                              </ul>
+                      </li>
+                      <li>
+                          <a href="/about">About</a>
+                              <ul>
+                                      <li><a href="/about/our-story">Our Story</a></li>
+                                      <li><a href="/about/community">Community</a></li>
+                                      <li><a href="/about/diversity">Diversity</a></li>
+                                      <li><a href="/about/service-delivery">Service Delivery</a></li>
+                                      <li><a href="/about/women">Women</a></li>
+                                      <li><a href="/about/alumni">Alumni</a></li>
+                                  <li><a href="/about/news">News</a></li>
+                              </ul>
+                      </li>
+                      <li>
+                          <a href="/offices">Offices</a>
+                              <ul>
+                                      <li><a href="/offices/toronto">Toronto</a></li>
+                                      <li><a href="/offices/new-york">New York</a></li>
+                                      <li><a href="/offices/calgary">Calgary</a></li>
+                                      <li><a href="/offices/montreal">Montréal</a></li>
+                                      <li><a href="/offices/halifax">Halifax</a></li>
+                              </ul>
+                      </li>
+                  </ul>
+              </nav>
+          </div>
+      </div>
+  </div>
+  
+      <!--startindex-->
+      
+<!-- build:js(./) ../../dist/js/app.js -->
+<!-- endbuild -->
+<script type="text/javascript" src="/Content/site/public/js/app.js"></script>
+  
+            
+  
+
+</body>
+</html>
