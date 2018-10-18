@@ -1,0 +1,22 @@
+.map-menu {
+  $menu-collapse-width: 30px;
+  $menu-full-width: 380px;
+  width: $menu-collapse-width * 2;
+  height: 100%;
+  background-color: $color-green-sea-nymph;
+  transition: width 0.4s ease-in-out;
+  display: flex;
+  position: relative;
+  margin-left: -1 * $menu-collapse-width;
+  &__collapsible {
+    width: $menu-collapse-width;
+    background-color: $color-green-sea-nymph;
+  }
+  &__menu {
+    background-color: $global-hue-lightest;
+    width: calc(100% - #{$menu-collapse-width});
+  }
+  &.open {
+    width: $menu-full-width;
+  }
+}

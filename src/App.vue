@@ -12,10 +12,10 @@ export default {
 
 <style lang="scss" src="./styles/main.scss"></style>
 
-<style scoped>
+<style>
+.global-footer {
+  margin-top: 0 !important;
+}
 .app {
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

@@ -21,7 +21,7 @@ module.exports = {
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
     // Lint eslint in webpack + display overlay on page with errors
-    useEslint: true,
+    useEslint: false,
     showEslintErrorsInOverlay: false,
 
     /**
