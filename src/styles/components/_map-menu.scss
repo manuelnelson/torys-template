@@ -8,16 +8,23 @@
   transition: width 0.4s ease-in-out;
   display: flex;
   position: relative;
-  margin-left: -1 * $menu-collapse-width;
+  //margin-left: -1 * $menu-collapse-width;
   &__collapsible {
     width: $menu-collapse-width;
     background-color: $color-green-sea-nymph;
   }
   &__menu {
     background-color: $global-hue-lightest;
-    width: calc(100% - #{$menu-collapse-width});
+    width: 0;
+    overflow: hidden;
+    &-container {
+      width: 300px;// $menu-full-width - $menu-collapse-width;
+    }
   }
   &.open {
+    &.map-menu__menu {
+      width: calc(100% - #{$menu-collapse-width});
+    }
     width: $menu-full-width;
     margin-left: 0;
   }
