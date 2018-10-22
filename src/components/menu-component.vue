@@ -1,16 +1,16 @@
 <template>
+  <div>
   <div class="map-menu" @click="toggleMenu" :class="{'open':menuOpen}">
-      <div class="map-menu__menu">
-        <div class="map-menu__menu-container">
-          <div class="service-list">
-            <div class="service-item" v-for="(industry,ndx) in industries" :key="ndx">{{industry.Name}}</div>
-          </div>
+      <div class="map-menu__container">
+        <div class="service-list">
+          <div class="service-item" v-for="(industry,ndx) in industries" :key="ndx">{{industry.Name}}</div>
         </div>
       </div>
       <div class="map-menu__collapsible"></div>
-      <div class="map-menu__project">
+  </div>
+  <div class="map-menu__project">
 
-      </div>
+  </div>
   </div>
 </template>
 <script>
