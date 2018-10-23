@@ -1,8 +1,8 @@
 <template>
   <div class="interactive-map">
     <div class="interactive-map__container">
-      <menu-component></menu-component>
-      <div id="map" class="interactive-map__map">
+      <menu-component :project="project"></menu-component>
+      <div id="map" class="interactive-map__map" @click="openProject">
       </div>
     </div>
   </div>
@@ -14,7 +14,8 @@ import MenuComponent from '../components/menu-component.vue';
 export default {
   data() {
     return {
-      map: null
+      map: null,
+      project: null
     }
   },
   components: {
@@ -34,6 +35,9 @@ export default {
     },
     toggleMenu() {
       this.menuOpen = !this.menuOpen;
+    }, 
+    openProject() {
+      this.project = {name: "kirsten"}
     }
   }
 }

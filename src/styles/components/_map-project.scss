@@ -1,0 +1,15 @@
+.map-project {
+  $menu-collapse-width: 0px;
+  $menu-full-width: 330px;
+  width: $menu-full-width;
+  height: 100%;
+  background-color: $global-hue-lightest;
+  transition: left 0.4s ease-in-out;
+  position: absolute;
+  will-change: width;
+  left: -100%;
+  &.open {
+    //width: $menu-full-width;
+    left: 0;
+  }
+}
