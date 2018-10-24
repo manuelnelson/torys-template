@@ -1,12 +1,35 @@
 <template>
   <div>
-    <div class="map-menu" @click="toggleMenu" :class="{'open':menuOpen}">
+    <div class="map-menu" :class="{'open':menuOpen}">
         <div class="map-menu__container">
-          <div class="service-list">
-            <div class="service-item" v-for="(industry,ndx) in industries" :key="ndx">{{industry.Name}}</div>
+          <div class="map-menu__header">
+            <h2>Explore Our Projects</h2>
+            <span>Choose your filters below.</span>
+          </div>
+          <div class="map-menu__main">
+            <div class="service-list">
+              <div class="service-list__main">
+                <span class="service-list__header">Regions <i class="fa fa-plus"></i></span>
+                <ul class="service-list__container">
+                    <li class="service-list__item" @click="activateItem(industry)" v-for="(region,ndx) in regions" :key="ndx"><i :class="getItemClass(region)" class="far"></i>{{region.Name}}</li>
+                </ul>
+              </div>
+              <div class="service-list__main">
+                <span class="service-list__header">Industries <i class="fa fa-plus"></i></span>
+                <ul class="service-list__container">
+                  <li class="service-list__item" @click="activateItem(industry)" v-for="(industry,ndx) in industries" :key="ndx">
+                    <i class="far" :class="getItemClass(industry)"></i>{{industry.Name}}
+                    <ul v-if="industry.Children">
+                      <li class="service-list__item" @click.stop="activateItem(child)" v-for="(child,ndx) in industry.Children" :key="ndx">
+                        <i :class="getItemClass(child)" class="far"></i>{{child.Name}}</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="map-menu__collapsible"></div>
+        <div @click="toggleMenu" class="map-menu__collapsible"></div>
     </div>
     <div class="map-project" :class="{'open': projectOpen}">
       <h1>Project Information</h1>
@@ -14,6 +37,7 @@
   </div>
 </template>
 <script>
+import Vue from 'vue';
 export default {
   props: ["project"],
   data() {
@@ -22,9 +46,13 @@ export default {
       industries: window.__INTIALSTATE__.industries,
       regions: window.__INTIALSTATE__.regions,
       projectOpen: false,
+      activeIndustries: [],
+      activeRegions: []
     }
   },
   components: {
+  },
+  computed: {
   },
   watch: {
     project: (value) => {
@@ -35,8 +63,25 @@ export default {
     console.log(this.industries)
   },
   methods: {
+    getItemClass(item) {      
+      return item.active ? 'fa-check-square' : 'fa-square';
+    },
     toggleMenu() {
       this.menuOpen = !this.menuOpen;
+    },
+    activateItem(item) {
+      if(!item.active) {
+        Vue.set(item, 'active',true);        
+        if(item.Children && item.Children.length > 0) {
+          item.Children.map(x => Vue.set(x,'active', true));
+        }
+      }
+      else {
+        Vue.set(item, 'active',false);
+        if(item.Children && item.Children.length > 0) {
+          item.Children.map(x => Vue.set(x,'active', false));
+        }
+      }
     }
   }
 }

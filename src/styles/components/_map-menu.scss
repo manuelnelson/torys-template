@@ -1,6 +1,8 @@
 .map-menu {
   $menu-collapse-width: 30px;
   $menu-full-width: 330px;
+  $menu-padding: 25px;
+  $header-height: 100px;
   width: $menu-collapse-width;
   height: 100%;
   background-color: $color-green-sea-nymph;
@@ -8,6 +10,23 @@
   position: relative;
   overflow: hidden;
   will-change: width;
+
+  &__header {
+    background-color: $primary-hue-darkest;
+    padding: $menu-padding;
+    color: white;
+    height: $header-height;
+    h2 {
+      font-size: 22px;
+      font-weight: bold;
+      padding-bottom: 10px;      
+    }
+  }
+  &__main {
+    padding: $menu-padding;
+    overflow: auto;
+    height: calc(100% - #{$header-height});
+  }
   &__collapsible {
     width: $menu-collapse-width;
     background-color: $color-green-sea-nymph;
@@ -24,11 +43,43 @@
     position: absolute;
     left: 0;
     z-index: 1;
-    padding: 30px;
   }
   &.open {
     width: $menu-full-width;
     margin-left: 0;
   }
-  
+
+  .service-list {
+    color: $primary-hue-darkest;
+    &__header {
+      font-size: 17px;
+      text-transform: uppercase;
+      display: block;
+      padding: 15px 0;
+      border-bottom: solid 1px $color-grey-shady-lady;
+      position: relative;
+      i {
+        position: absolute;
+        right:  0;
+        cursor: pointer;
+      }
+    }
+    &__container {
+
+    }
+    &__item {
+      $icon-width: 23px;
+      padding: 10px 0 10px $icon-width;
+      font-size: 14px;
+      text-transform: uppercase;
+      cursor: pointer;
+      &:last-child {
+        padding-bottom: 0;
+      }
+      i {
+        padding-right: 10px;
+        margin-left: -1*$icon-width;
+      }
+    }
+  }
 }
