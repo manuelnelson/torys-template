@@ -32,7 +32,7 @@
         </div>
         <div @click="toggleMenu" class="map-menu__collapsible"></div>
     </div>
-    <div class="map-project" :class="{'open': project}">
+    <div class="map-project" :class="{'open': project != null }">
       <h1>Project Information</h1>
     </div>
   </div>
