@@ -32,7 +32,7 @@
         </div>
         <div @click="toggleMenu" class="map-menu__collapsible"></div>
     </div>
-    <div class="map-project" :class="{'open': projectOpen}">
+    <div class="map-project" :class="{'open': project}">
       <h1>Project Information</h1>
     </div>
   </div>
@@ -40,7 +40,7 @@
 <script>
 import Vue from 'vue';
 export default {
-  props: ["project"],
+  props: ["project", "filterProjects"],
   data() {
     return {
       menuOpen: false,
@@ -78,14 +78,24 @@ export default {
     }
   },
   watch: {
-    project: (value) => {
-      console.log(value);
-    }
+    // project: (value) => {
+    //   // console.log('proejct value');
+    //   // console.log(value);
+    //   //this.test();
+    //   //debugger;
+    //   //Vue.set(this,'menuOpen',true)
+    //   // this.projectOpen = true;
+    //   //this.$forceUpdate();
+    //   // console.log(this.menuOpen)
+    // }
   },
   mounted() {
-    console.log(this.industries)
+    console.log(this.projects)
   },
   methods: {
+    test() {
+      console.log('test')
+    },
     getItemClass(item) {      
       return item.active ? 'fa-check-square' : 'fa-square';
     },
@@ -108,6 +118,7 @@ export default {
           item.Children.map(x => {Vue.set(x,'active', false);});
         }
       }
+      this.filterProjects(this.activeIndustries.map(x=>x.Guid), this.activeRegions.map(x=>x.Guid));
     },
     activateRegion(item) {
       if(!item.active) {
@@ -124,6 +135,7 @@ export default {
           item.Children.map(x => {Vue.set(x,'active', false);});
         }
       }
+      this.filterProjects(this.activeIndustries, this.activeRegions);
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="interactive-map">
     <div class="interactive-map__container">
-      <menu-component :project="project"></menu-component>
+      <menu-component :project="selectedProject" :filter-projects="filterProjects"></menu-component>
       <div id="map" class="interactive-map__map" @click="openProject">
       </div>
     </div>
@@ -15,7 +15,9 @@ export default {
   data() {
     return {
       map: null,
-      project: null
+      projects: window.__INTIALSTATE__.projects,
+      markers: [],
+      selectedProject: null
     }
   },
   components: {
@@ -29,15 +31,49 @@ export default {
   methods: {
     initMap() {
       this.map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
-      })
+        center: {lat: -0, lng: 0},
+        zoom: 3
+      });
+      
+      //Add all projects to map and add to markers list
+      this.addProjectsToMap(this.projects);
     },
     toggleMenu() {
       this.menuOpen = !this.menuOpen;
     }, 
     openProject() {
-      this.project = {name: "kirsten"}
+    },
+    filterProjects(selectedIndustries, selectedRegions) {
+      this.clearMap();
+      let selectedProjects = this.projects.filter(project => selectedIndustries.indexOf(project.Industry.Guid) > -1);
+      this.addProjectsToMap(selectedProjects);
+    },
+    addProjectsToMap(projects) {
+      this.markers = [];
+      projects.forEach(project => {
+        let latLng = {lat:project.Latitude,lng:project.Longitude};
+        let marker = new google.maps.Marker({
+            position: latLng,
+            map: this.map,
+            title: project.Name
+        });
+        this.markers.push({
+          marker: marker,
+          project: project
+        });
+        let that = this;
+        marker.addListener('click', function() {that.setProject(project)})         
+      });
+    },
+    setProject(project){
+      console.log(project)
+      this.selectedProject = project;
+    },
+    clearMap() {
+      this.markers.forEach(marker => {
+        marker.marker.setMap(null);
+      })
+
     }
   }
 }

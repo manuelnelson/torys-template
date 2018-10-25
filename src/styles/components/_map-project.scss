@@ -8,6 +8,8 @@
   position: absolute;
   will-change: width;
   left: -100%;
+  top: 0;
+  z-index: 1;
   &.open {
     //width: $menu-full-width;
     left: 0;
