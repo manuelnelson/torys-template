@@ -7,17 +7,17 @@
             <span>Choose your filters below.</span>
           </div>
           <div class="map-menu__main">
-            <span v-for="(region,ndx) in activeIndustries" :key="ndx">{{region.Name}}</span>
+            <!-- <span v-for="(region,ndx) in activeIndustries" :key="ndx">{{region.Name}}</span> -->
             <div class="service-list">
               <div class="service-list__main">
-                <span class="service-list__header">Regions <i class="fa fa-plus"></i></span>
-                <ul class="service-list__container">
+                <span class="service-list__header" @click="regionsOpen = !regionsOpen">Regions <i class="fa" :class="getExpandClass(regionsOpen)"></i></span>
+                <ul class="service-list__container" :class="{'open': regionsOpen}">
                     <li class="service-list__item" @click="activateRegion(region)" v-for="(region,ndx) in regions" :key="ndx"><i :class="getItemClass(region)" class="far"></i>{{region.Name}}</li>
                 </ul>
               </div>
               <div class="service-list__main">
-                <span class="service-list__header">Industries <i class="fa fa-plus"></i></span>
-                <ul class="service-list__container">
+                <span class="service-list__header" @click="industriesOpen = !industriesOpen">Industries <i class="fa" :class="getExpandClass(industriesOpen)"></i></span>
+                <ul class="service-list__container" :class="{'open': industriesOpen}">
                   <li class="service-list__item" @click="activateIndustry(industry)" v-for="(industry,ndx) in industries" :key="ndx">
                     <i class="far" :class="getItemClass(industry)"></i>{{industry.Name}}
                     <ul v-if="industry.Children">
@@ -46,6 +46,8 @@ export default {
       menuOpen: false,
       industries: window.__INTIALSTATE__.industries,
       regions: window.__INTIALSTATE__.regions,
+      industriesOpen: false,
+      regionsOpen: false,
       projectOpen: false,
     }
   },
@@ -86,6 +88,9 @@ export default {
   methods: {
     getItemClass(item) {      
       return item.active ? 'fa-check-square' : 'fa-square';
+    },
+    getExpandClass(open) {      
+      return open ? 'fa-minus' : 'fa-plus';
     },
     toggleMenu() {
       this.menuOpen = !this.menuOpen;
