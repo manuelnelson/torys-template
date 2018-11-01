@@ -1,6 +1,6 @@
 .map-menu {
   $menu-collapse-width: 30px;
-  $menu-full-width: 330px;
+  $menu-full-width: 410px;
   $menu-padding: 25px;
   $header-height: 100px;
   width: $menu-collapse-width;
@@ -10,7 +10,7 @@
   position: relative;
   overflow: hidden;
   will-change: width;
-
+  z-index: 3;
   &__header {
     background-color: $primary-hue-darkest;
     padding: $menu-padding;
@@ -37,7 +37,7 @@
   }
   &__container {
     background-color: transparent;
-    width: 300px;
+    width: $menu-full-width - 30px;
     background-color: $global-hue-lightest;
     height: 100%;
     position: absolute;

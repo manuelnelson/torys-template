@@ -33,14 +33,47 @@
         <div @click="toggleMenu" class="map-menu__collapsible"></div>
     </div>
     <div class="map-project" :class="{'open': project != null }">
-      <h1>Project Information</h1>
+      <div class="map-project__container" v-if="project">
+        <span class="map-project__close" @click="closeProject()"><i class="fa fa-times"></i></span>
+        <h1>{{project.Name}}</h1>
+        <div class="project-detail" v-if="project.Industries.length > 0">
+          <span class="project-detail__label">Industry</span>
+          <span class="project-detail__value">{{project.Industries[0].Name}}</span>
+        </div>
+        <div class="project-detail" v-if="project.ClientName.length > 0">
+          <span class="project-detail__label">Client Name</span>
+          <span class="project-detail__value">{{project.ClientName}}</span>
+        </div>
+        <div class="project-detail" v-if="project.ClientRole.length > 0">
+          <span class="project-detail__label">Client Role</span>
+          <span class="project-detail__value">{{project.ClientRole}}</span>
+        </div>
+        <div class="project-detail" v-if="project.Service.Name">
+          <span class="project-detail__label">Service</span>
+          <span class="project-detail__value">{{project.Service.Name}}</span>
+        </div>
+        <div class="project-detail" v-if="project.Value.length > 0">
+          <span class="project-detail__label">Value</span>
+          <span class="project-detail__value">{{project.Value}}</span>
+        </div>
+        <div class="project-detail" v-if="project.Url.length > 0">
+          <a class="project-detail__url" :href="project.Url">Read more at Torys.com</a>
+        </div>
+        <div class="project-detail" v-if="project.Level.length > 0">
+          <span class="project-detail__label">Government Level</span>
+          <span class="project-detail__value">{{project.Level}}</span>
+        </div>
+        <div class="project-detail no-bottom-line" v-if="project.Description.length > 0">
+          <div class="project-detail__value" v-html="project.Description"></div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 <script>
 import Vue from 'vue';
 export default {
-  props: ["project", "filterProjects"],
+  props: ["project", "filterProjects", "removeProject"],
   data() {
     return {
       menuOpen: false,
@@ -90,11 +123,10 @@ export default {
     // }
   },
   mounted() {
-    console.log(this.projects)
   },
   methods: {
-    test() {
-      console.log('test')
+    closeProject() {
+      this.removeProject();
     },
     getItemClass(item) {      
       return item.active ? 'fa-check-square' : 'fa-square';
@@ -135,7 +167,7 @@ export default {
           item.Children.map(x => {Vue.set(x,'active', false);});
         }
       }
-      this.filterProjects(this.activeIndustries, this.activeRegions);
+      this.filterProjects(this.activeIndustries.map(x=>x.Guid), this.activeRegions.map(x=>x.Guid));
     }
   }
 }

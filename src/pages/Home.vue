@@ -1,7 +1,7 @@
 <template>
   <div class="interactive-map">
     <div class="interactive-map__container">
-      <menu-component :project="selectedProject" :filter-projects="filterProjects"></menu-component>
+      <menu-component ref="menu" :project="selectedProject" :remove-project="removeProject" :filter-projects="filterProjects"></menu-component>
       <div id="map" class="interactive-map__map" @click="openProject">
       </div>
     </div>
@@ -11,13 +11,15 @@
 <script>
 import $Scriptjs from 'scriptjs';
 import MenuComponent from '../components/menu-component.vue';
+import { setTimeout } from 'timers';
 export default {
   data() {
     return {
       map: null,
       projects: window.__INTIALSTATE__.projects,
       markers: [],
-      selectedProject: null
+      selectedProject: null,
+      menuOpen: false
     }
   },
   components: {
@@ -45,7 +47,17 @@ export default {
     },
     filterProjects(selectedIndustries, selectedRegions) {
       this.clearMap();
-      let selectedProjects = this.projects.filter(project => selectedIndustries.indexOf(project.Industry.Guid) > -1);
+      let selectedProjects = this.projects;
+      
+      if(selectedIndustries.length > 0) {
+         selectedProjects = selectedProjects.filter(project => project.Industries.map(x=>x.Guid).filter(industryId => selectedIndustries.indexOf(industryId) > -1).length > 0);
+      }
+      if(selectedRegions.length > 0) {
+         selectedProjects = selectedProjects.filter(project => project.Regions.map(x=>x.Guid).filter(regionId => selectedRegions.indexOf(regionId) > -1).length > 0);
+      }
+      console.log('selected ---');
+      console.log(selectedIndustries);
+      console.log(selectedRegions);
       this.addProjectsToMap(selectedProjects);
     },
     addProjectsToMap(projects) {
@@ -66,8 +78,19 @@ export default {
       });
     },
     setProject(project){
-      console.log(project)
-      this.selectedProject = project;
+      //debugger;
+      if(this.$refs.menu.menuOpen) {
+        this.$refs.menu.menuOpen = false;
+        var that = this;
+        setTimeout(()=> {
+          that.selectedProject = project;
+        }, 500)
+      } else {
+        this.selectedProject = project;
+      }
+    },
+    removeProject() {
+      this.selectedProject = null;
     },
     clearMap() {
       this.markers.forEach(marker => {

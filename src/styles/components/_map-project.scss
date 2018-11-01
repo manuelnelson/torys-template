@@ -1,6 +1,6 @@
 .map-project {
   $menu-collapse-width: 0px;
-  $menu-full-width: 330px;
+  $menu-full-width: 410px;
   width: $menu-full-width;
   height: 100%;
   background-color: $global-hue-lightest;
@@ -10,8 +10,27 @@
   left: -100%;
   top: 0;
   z-index: 1;
+  padding: 20px;
+  overflow-y: auto; 
+  &__container {
+    padding-left: 30px;
+    width: 100%;
+    position: relative;
+  }
   &.open {
     //width: $menu-full-width;
     left: 0;
+  }
+  &__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $primary-hue-dark;
+    cursor: pointer;
+  }
+  h1 {
+    font-size: 25px;
+    color: $primary-hue-dark;
+    font-weight: bold;
   }
 }
