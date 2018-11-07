@@ -33,4 +33,13 @@
     color: $primary-hue-dark;
     font-weight: bold;
   }
+  @media #{$global-bp-tablet} {
+    $menu-tablet-width: 330px;
+    width: $menu-tablet-width;
+  }
+  @media #{$global-bp-mobile} {
+    $menu-mobile-width: 100vw;
+    width: $menu-mobile-width;
+  }
+
 }

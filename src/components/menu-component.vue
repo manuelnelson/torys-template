@@ -27,18 +27,25 @@
                   </li>
                 </ul>
               </div>
+              <div>
+                <button class="btn btn-primary" @click="updateMap">Apply Filters</button>
+                <button class="btn btn-primary" @click="clearFilters">Clear All</button>
+              </div>
             </div>
           </div>
         </div>
-        <div @click="toggleMenu" class="map-menu__collapsible"></div>
+        <div @click="toggleMenu" class="map-menu__collapsible">
+          <i class="fa fa-chevron-right" v-if="!menuOpen"></i>
+          <i class="fa fa-chevron-left" v-if="menuOpen"></i>
+        </div>
     </div>
     <div class="map-project" :class="{'open': project != null }">
-      <div class="map-project__container" v-if="project">
+      <div class="map-project__container" v-if="project != null">
         <span class="map-project__close" @click="closeProject()"><i class="fa fa-times"></i></span>
         <h1>{{project.Name}}</h1>
         <div class="project-detail" v-if="project.Industries.length > 0">
           <span class="project-detail__label">Industry</span>
-          <span class="project-detail__value">{{project.Industries[0].Name}}</span>
+          <span class="project-detail__value">{{project.Industries[0].Name}} <img class="project-detail__img" :src="getIcon(project)" /></span>
         </div>
         <div class="project-detail" v-if="project.ClientName.length > 0">
           <span class="project-detail__label">Client Name</span>
@@ -48,7 +55,7 @@
           <span class="project-detail__label">Client Role</span>
           <span class="project-detail__value">{{project.ClientRole}}</span>
         </div>
-        <div class="project-detail" v-if="project.Service.Name">
+        <div class="project-detail" v-if="project.Service && project.Service.Name">
           <span class="project-detail__label">Service</span>
           <span class="project-detail__value">{{project.Service.Name}}</span>
         </div>
@@ -57,10 +64,10 @@
           <span class="project-detail__value">{{project.Value}}</span>
         </div>
         <div class="project-detail" v-if="project.Url.length > 0">
-          <a class="project-detail__url" :href="project.Url">Read more at Torys.com</a>
+          <a class="project-detail__url" :href="project.Url">Read more at Torys.com <i class="fa fa-external-link-alt"></i></a>
         </div>
         <div class="project-detail" v-if="project.Level.length > 0">
-          <span class="project-detail__label">Government Level</span>
+          <span class="project-detail__label">Government Level</span><html></html>
           <span class="project-detail__value">{{project.Level}}</span>
         </div>
         <div class="project-detail no-bottom-line" v-if="project.Description.length > 0">
@@ -72,16 +79,28 @@
 </template>
 <script>
 import Vue from 'vue';
+import breakpointMixin from '../mixins/breakpoint-mixin.js'
+import { setTimeout } from 'timers';
+
 export default {
   props: ["project", "filterProjects", "removeProject"],
   data() {
     return {
-      menuOpen: false,
+      menuOpen: !this.isMobile(),
       industries: window.__INTIALSTATE__.industries,
       regions: window.__INTIALSTATE__.regions,
       industriesOpen: false,
       regionsOpen: false,
       projectOpen: false,
+    }
+  },
+  mixins: [breakpointMixin],
+  mounted(){
+    let that = this;
+    if(this.isMobile()) {
+      setTimeout(() => {
+        that.menuOpen = true;
+      }, 5000)
     }
   },
   components: {
@@ -111,31 +130,40 @@ export default {
     }
   },
   watch: {
-    // project: (value) => {
-    //   // console.log('proejct value');
-    //   // console.log(value);
-    //   //this.test();
-    //   //debugger;
-    //   //Vue.set(this,'menuOpen',true)
-    //   // this.projectOpen = true;
-    //   //this.$forceUpdate();
-    //   // console.log(this.menuOpen)
-    // }
-  },
-  mounted() {
   },
   methods: {
     closeProject() {
       this.removeProject();
     },
+    getIcon(project) {
+      return project.Industries[0].Icon.replace("/~/media/images/map/", "/static/icons/").replace("png","svg")
+    },
     getItemClass(item) {      
       return item.active ? 'fa-check-square' : 'fa-square';
+    },
+    clearFilters() {
+      this.industries.forEach(industry => {
+        Vue.set(industry, 'active', false);
+        if(industry.Children && industry.Children.length > 0) {
+          industry.Children.map(x => {Vue.set(x,'active', false);});
+        }
+      });
+      this.regions.forEach(region => {
+        Vue.set(region, 'active', false);
+      });
+      this.updateMap();
     },
     getExpandClass(open) {      
       return open ? 'fa-minus' : 'fa-plus';
     },
     toggleMenu() {
       this.menuOpen = !this.menuOpen;
+    },
+    updateMap() {
+      this.filterProjects(this.activeIndustries.map(x=>x.Guid), this.activeRegions.map(x=>x.Guid));
+      if(this.isMobile()) {
+        this.menuOpen = false;
+      }
     },
     activateIndustry(item) {
       if(!item.active) {
@@ -150,7 +178,6 @@ export default {
           item.Children.map(x => {Vue.set(x,'active', false);});
         }
       }
-      this.filterProjects(this.activeIndustries.map(x=>x.Guid), this.activeRegions.map(x=>x.Guid));
     },
     activateRegion(item) {
       if(!item.active) {
@@ -167,7 +194,6 @@ export default {
           item.Children.map(x => {Vue.set(x,'active', false);});
         }
       }
-      this.filterProjects(this.activeIndustries.map(x=>x.Guid), this.activeRegions.map(x=>x.Guid));
     }
   }
 }
