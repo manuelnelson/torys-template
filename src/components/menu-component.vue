@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="map-menu" :class="{'open':menuOpen}">
+    <div class="map-menu" :class="{'open':menuOpen}" v-touch:swipe.left="closeMenu">
         <div class="map-menu__container">
           <div class="map-menu__header">
             <h2>Explore Our Projects</h2>
@@ -39,7 +39,7 @@
           <i class="fa fa-chevron-left" v-if="menuOpen"></i>
         </div>
     </div>
-    <div class="map-project" :class="{'open': project != null }">
+    <div class="map-project" :class="{'open': project != null }" v-touch:swipe.left="closeProject">
       <div class="map-project__container" v-if="project != null">
         <span class="map-project__close" @click="closeProject()"><i class="fa fa-times"></i></span>
         <h1>{{project.Name}}</h1>
@@ -132,6 +132,9 @@ export default {
   watch: {
   },
   methods: {
+    closeMenu() {
+      this.menuOpen = false;
+    },
     closeProject() {
       this.removeProject();
     },
